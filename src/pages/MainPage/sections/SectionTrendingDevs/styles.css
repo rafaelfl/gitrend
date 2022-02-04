@@ -1,0 +1,11 @@
+
+.trending-devs-container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    background-color: brown;
+}
