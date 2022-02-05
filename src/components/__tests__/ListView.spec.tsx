@@ -29,8 +29,6 @@ describe('ListView component tests', () => {
             </ListView>,
         );
 
-        // screen.debug();
-
         expect(screen.getAllByRole('button')).toHaveLength(3);
     });
 
@@ -44,8 +42,6 @@ describe('ListView component tests', () => {
                 <button onClick={onClick}>Button3</button>
             </ListView>,
         );
-
-        // screen.debug();
 
         const buttons = screen.getAllByRole('button');
 

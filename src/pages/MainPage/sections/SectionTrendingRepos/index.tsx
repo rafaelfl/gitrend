@@ -3,6 +3,25 @@ import searchIcon from '../../../../assets/images/search-icon.svg';
 import './styles.css';
 
 export const SectionTrendingRepos = (): JSX.Element => {
+    const languageList = [
+        {
+            label: 'C++',
+            value: 'cpp',
+        },
+        {
+            label: 'Dart',
+            value: 'dart',
+        },
+        {
+            label: 'Javascript',
+            value: 'javascript',
+        },
+        {
+            label: 'Typescript',
+            value: 'typescript',
+        },
+    ];
+
     const cards = Array(10).fill(0);
 
     return (
@@ -11,11 +30,19 @@ export const SectionTrendingRepos = (): JSX.Element => {
                 <h2>Trending Repositories</h2>
                 <div className="tools">
                     <div className="search-box">
-                        <input type="search" className="search-box__input" placeholder="Search" />
+                        <input
+                            type="search"
+                            className="search-box__input"
+                            placeholder="Type and press enter to search..."
+                        />
                         <img src={searchIcon} alt="search" />
                     </div>
 
-                    <SelectionMenu />
+                    <SelectionMenu
+                        selectedOptionLabel="Language:"
+                        menuLabel="Select the language"
+                        menuItems={languageList}
+                    />
                 </div>
             </div>
             <div className="trending-repos-container__grid">
