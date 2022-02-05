@@ -1,6 +1,7 @@
-import { CardRepository, SelectionMenu } from '../../../../components';
+import { CardRepository, SelectionMenu, Switch } from '../../../../components';
 import searchIcon from '../../../../assets/images/search-icon.svg';
 import './styles.css';
+import { useState } from 'react';
 
 export const SectionTrendingRepos = (): JSX.Element => {
     const languageList = [
@@ -24,6 +25,8 @@ export const SectionTrendingRepos = (): JSX.Element => {
 
     const cards = Array(10).fill(0);
 
+    const [onlyFavorite, setOnlyFavority] = useState(false);
+
     return (
         <section className="trending-repos-container">
             <div className="trending-repos-container__header">
@@ -36,6 +39,17 @@ export const SectionTrendingRepos = (): JSX.Element => {
                             placeholder="Type and press enter to search..."
                         />
                         <img src={searchIcon} alt="search" />
+                    </div>
+
+                    <div className="favorite-filter">
+                        <Switch
+                            checked={onlyFavorite}
+                            onChange={() => {
+                                console.log('clicado', onlyFavorite);
+                                setOnlyFavority(!onlyFavorite);
+                            }}
+                        />
+                        <span>Show only favorites</span>
                     </div>
 
                     <SelectionMenu

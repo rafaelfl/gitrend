@@ -51,7 +51,7 @@ export const CardRepository = ({
             </div>
             <div className="card__content">{resumedDescription}</div>
             <div className="card__url">
-                <a href={url}>{` ${url}`}</a>
+                <a href={url} target="_blank" rel="noreferrer">{` ${url}`}</a>
             </div>
             <div className="card__footer">
                 <span>{` ${language}`}</span>
