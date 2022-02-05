@@ -3,20 +3,17 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    background-color: red;
-    padding: 3rem;
+    padding: 3rem 4rem;
 }
 
 .root-container__header {
     display: flex;
     flex: 1;
-    background-color: green;
 }
 
 .root-container__content {
     display: flex;
     flex: 8;
-    background-color: blue;
     flex-direction: column;
 }
 

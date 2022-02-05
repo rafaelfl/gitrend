@@ -1,9 +1,16 @@
 
-.header {
+.header-container {
     display: flex;
     flex: 1;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
+    max-width: 100%;
+}
+
+.header-container h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

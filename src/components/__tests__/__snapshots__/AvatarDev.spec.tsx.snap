@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AvatarDev component tests it should match snapshot 1`] = `
+<div>
+  <div
+    class="avatar-container"
+  >
+    <button
+      class="avatar-container__button"
+      style="background-image: url(octocat.svg);"
+    />
+  </div>
+</div>
+`;
