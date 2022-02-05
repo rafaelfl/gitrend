@@ -3,7 +3,7 @@
 exports[`Switch component tests it should match snapshot 1`] = `
 <div>
   <label
-    class="sc-eCImPb cVTSRE"
+    class="sc-eCImPb dYRvzG"
   >
     <input
       checked=""
@@ -17,7 +17,7 @@ exports[`Switch component tests it should match snapshot 1`] = `
 exports[`Switch component tests it should match snapshot 2`] = `
 <div>
   <label
-    class="sc-eCImPb cVTSRE"
+    class="sc-eCImPb dYRvzG"
   >
     <input
       type="checkbox"

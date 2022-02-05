@@ -51,6 +51,7 @@ export const SwitchContainer = styled.label`
 
         &:checked {
             & + span {
+                color: var(--primary);
                 &:before {
                     background: var(--primary);
                 }

@@ -41,6 +41,12 @@ export const SectionTrendingRepos = (): JSX.Element => {
                         <img src={searchIcon} alt="search" />
                     </div>
 
+                    <SelectionMenu
+                        selectedOptionLabel="Language:"
+                        menuLabel="Select the language"
+                        menuItems={languageList}
+                    />
+
                     <div className="favorite-filter">
                         <Switch
                             checked={onlyFavorite}
@@ -51,12 +57,6 @@ export const SectionTrendingRepos = (): JSX.Element => {
                         />
                         <span>Show only favorites</span>
                     </div>
-
-                    <SelectionMenu
-                        selectedOptionLabel="Language:"
-                        menuLabel="Select the language"
-                        menuItems={languageList}
-                    />
                 </div>
             </div>
             <div className="trending-repos-container__grid">
