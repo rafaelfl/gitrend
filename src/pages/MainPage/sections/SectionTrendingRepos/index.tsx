@@ -49,12 +49,14 @@ export const SectionTrendingRepos = (): JSX.Element => {
                 {cards.map((_, index) => (
                     <CardRepository
                         key={index}
-                        name="microsoft / PowerToys"
-                        description="Windows system utilities to maximize productivity"
+                        title="microsoft / PowerToys"
+                        // description="Windows system utilities to maximize productivity"
+                        description="Small educational project developed with the objective of presenting the concepts related to the development of backend REST APIs with Node.js for the course Distributed Systems (2021.2) of the Computer Engineering Course - Federal University of Maranhão (UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)"
                         language="C#"
                         stars={67934}
                         forks={3816}
-                        isFavorite={true}
+                        isFavorite={false}
+                        url="https://github.com/microsoft/terminal"
                     />
                 ))}
             </div>

@@ -1,0 +1,94 @@
+.card {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    min-height: 200px;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    color: black;
+    gap: 0.5rem;
+}
+
+.card__favorite {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    padding: 1rem;
+    background-color: transparent;
+    border: 0;
+    color: red;
+}
+
+.card__favorite > i {
+    cursor: pointer;
+}
+
+.card__title {
+    display: flex;
+    flex: 2;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: 500;
+    gap: 0.8rem;
+}
+
+.card__title > span {
+    line-height: 1.6;
+}
+
+.card__content {
+    display: flex;
+    flex: 4;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.card__url {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: blue;
+    overflow: hidden;
+}
+
+.card__url > a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card__url > a:active {
+    opacity: 0.5;
+}
+
+.card__url > a:visited {
+    color: blue;
+}
+
+.card__footer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.card__stars,
+.card__fork {
+    gap: 0.5rem;
+}
