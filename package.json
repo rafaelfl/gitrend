@@ -29,7 +29,7 @@
         "prepare": "husky install",
         "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --max-warnings=0",
         "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
-        "prettier": "prettier 'src/**/*.{js,jsx,ts,tsx,json}' --write"
+        "prettier": "prettier 'src/**/*.{js,jsx,ts,tsx,json,css}' --write"
     },
     "eslintConfig": {
         "extends": "react-app"

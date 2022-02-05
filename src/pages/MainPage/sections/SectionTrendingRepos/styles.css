@@ -1,11 +1,112 @@
-
 .trending-repos-container {
     display: flex;
-    flex: 4;
-    flex-direction: row;
+    flex: 0 0 auto;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
     gap: 1.5rem;
-    background-color: aqua;
+    padding: 1.5rem 0;
+}
+
+.trending-repos-container__header {
+    display: flex;
+    flex: 0 0 80px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.tools {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.search-box {
+    border-radius: 20px;
+    background-color: #fff;
+    padding-right: 12px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    color: var(--light-font);
+    box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
+    overflow: hidden;
+}
+
+.search-box__input {
+    border: none;
+    flex: 1;
+    outline: none;
+    height: 100%;
+    padding: 0 20px;
+    font-size: 16px;
+    background-color: #fff;
+    color: var(--dark-grey);
+}
+
+.search-input::placeholder {
+    color: var(--dark-grey);
+    opacity: 0.6;
+}
+
+details > summary:first-of-type,
+details[open] > summary:first-of-type {
+    list-style: none;
+}
+
+.language {
+    position: relative;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.language__summary {
+    padding: 0 0.5rem;
+}
+
+.language__text {
+    text-align: right;
+    font-weight: 600;
+}
+
+.language__text::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: text-bottom;
+    margin-left: 4px;
+    content: '';
+    border: 4px solid;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.trending-repos-container__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1.5rem;
+    justify-items: center;
+    width: 100%;
+}
+
+@media (min-width: 481px) {
+    .trending-repos-container__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 1.5rem;
+        justify-items: center;
+        width: 100%;
+    }
 }
