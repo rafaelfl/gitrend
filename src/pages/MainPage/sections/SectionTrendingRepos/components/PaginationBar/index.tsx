@@ -1,4 +1,3 @@
-import { appConfig } from '../../../../../../config';
 import './styles.css';
 
 interface PaginationBarProps {
@@ -20,7 +19,6 @@ const PaginationBar = ({
 }: PaginationBarProps): JSX.Element => {
     return (
         <div className="pagination-bar">
-            <span className="pagination-bar__label">{`${pageNumber} - ${appConfig.resultsPerPage} of ${maxPages}`}</span>
             <span className="pagination-bar__button-panel">
                 <button
                     aria-label="Back to the first page"
@@ -38,6 +36,7 @@ const PaginationBar = ({
                 >
                     <i className="fas fa-angle-left fa-lg"></i>
                 </button>
+                <span className="pagination-bar__label">{`${pageNumber} of ${maxPages}`}</span>
                 <button
                     aria-label="Go to the next page"
                     className="pagination-bar__button"

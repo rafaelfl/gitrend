@@ -5,6 +5,7 @@ import { useAppSelector } from '../../../../hooks';
 import { selectRepositoryStoreError, selectRepositoryStoreStatus } from '../../../../store/features/gitRepository';
 import { selectUserList } from '../../../../store/features/gitUser';
 import { GitUser } from '../../../../types';
+import { ErrorMessage } from '../../components/ErrorMessage';
 import './styles.css';
 
 export const SectionTrendingDevs = (): JSX.Element => {
@@ -16,9 +17,10 @@ export const SectionTrendingDevs = (): JSX.Element => {
     const renderRepositoryList = useCallback(() => {
         if (statusRepositories === 'rejected') {
             return (
-                <div style={{ width: '100%', fontSize: '1.5rem' }}>
-                    An error occurred fetching the data from GitHub: {errorRepositories}
-                </div>
+                <ErrorMessage
+                    errorTitle="An error occurred fetching the data from GitHub:"
+                    errorMessage={errorRepositories}
+                />
             );
         }
 

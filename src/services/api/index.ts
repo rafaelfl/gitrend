@@ -6,6 +6,8 @@ interface ApiService {
         page: number,
         perPage: number,
         createDate: string,
+        language: string,
+        text: string,
     ) => Promise<FetchGitRepositoriesAndUsersResponse>;
 }
 

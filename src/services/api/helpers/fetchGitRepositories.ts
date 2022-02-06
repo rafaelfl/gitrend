@@ -5,8 +5,18 @@ export const fetchGitRepositoriesAndUsers = async (
     page: number,
     perPage: number,
     createDate: string,
+    language: string,
+    text: string,
 ): Promise<FetchGitRepositoriesAndUsersResponse> => {
-    const fetchUrl = `https://api.github.com/search/repositories?q=created:%3E${createDate}&sort=stars&order=desc&page=${page}&per_page=${perPage}`;
+    let queryString = `language:${language} created:>${createDate}`;
+
+    if (!text?.trim()) {
+        queryString += ` ${text} in:name,description,readme`;
+    }
+
+    const fetchUrl = `https://api.github.com/search/repositories?q=${encodeURIComponent(
+        queryString,
+    )}&sort=stars&order=desc&page=${page}&per_page=${perPage}`;
 
     const response = await fetch(fetchUrl, {
         headers: {
@@ -15,15 +25,22 @@ export const fetchGitRepositoriesAndUsers = async (
         },
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
+        if (data['message']) {
+            throw new Error(`${data['message']}. More info: ${data['documentation_url']}`);
+        }
+
         throw new Error('Error fetching git data');
     }
 
-    const data = await response.json();
-    const totalCount = data['total_count'];
+    // GitHub api only supports the maximum of 1000 repositories
+    const totalCount = data['total_count'] > 1000 ? 1000 : data['total_count'];
 
     const items: GenericMap[] = data['items'];
 
+    // creating repository entities
     const gitRepositoryList: GitRepository[] = items.map((item: GenericMap) => {
         const repo: GitRepository = {
             id: item.id ?? '',
@@ -40,6 +57,7 @@ export const fetchGitRepositoriesAndUsers = async (
         return repo;
     });
 
+    // creating user entities
     const gitUsersList: GitUser[] = items.reduce((acc: GitUser[], currentUser: GenericMap) => {
         const owner = currentUser['owner'];
 

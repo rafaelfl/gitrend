@@ -13,6 +13,9 @@ import {
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { GitRepository } from '../../../../types';
 import { fetchRepositoryData } from '../../../../store/features/gitRepository/thunks';
+import { ErrorMessage } from '../../components/ErrorMessage';
+
+type NavigationEventTypes = 'first' | 'previous' | 'next' | 'last';
 
 export const SectionTrendingRepos = (): JSX.Element => {
     const dispatch = useAppDispatch();
@@ -35,6 +38,33 @@ export const SectionTrendingRepos = (): JSX.Element => {
         setOnlyFavorite(false);
     }, [setLanguageVal, setSearchText, setOnlyFavorite]);
 
+    const handlePageNavigation = useCallback(
+        (navEvent: NavigationEventTypes) => {
+            let newPageNumber = pageNumber;
+
+            switch (navEvent) {
+                case 'first':
+                    newPageNumber = 1;
+                    break;
+                case 'previous':
+                    newPageNumber = pageNumber - 1;
+                    break;
+                case 'next':
+                    newPageNumber = pageNumber + 1;
+                    break;
+                case 'last':
+                    newPageNumber = Math.ceil(totalCountRepositories / appConfig.resultsPerPage);
+                    break;
+            }
+
+            if (newPageNumber >= 1 && newPageNumber <= Math.ceil(totalCountRepositories / appConfig.resultsPerPage)) {
+                setPageNumber(newPageNumber);
+                dispatch(fetchRepositoryData({ page: newPageNumber }));
+            }
+        },
+        [pageNumber, totalCountRepositories, appConfig],
+    );
+
     useEffect(() => {
         dispatch(fetchRepositoryData({}));
     }, []);
@@ -42,9 +72,10 @@ export const SectionTrendingRepos = (): JSX.Element => {
     const renderRepositoryList = useCallback(() => {
         if (statusRepositories === 'rejected') {
             return (
-                <div style={{ width: '100%', fontSize: '1.5rem' }}>
-                    An error occurred fetching the data from GitHub: {errorRepositories}
-                </div>
+                <ErrorMessage
+                    errorTitle="An error occurred fetching the data from GitHub:"
+                    errorMessage={errorRepositories}
+                />
             );
         }
 
@@ -116,7 +147,14 @@ export const SectionTrendingRepos = (): JSX.Element => {
             </div>
             {renderRepositoryList()}
             <div className="trending-repos-container__footer">
-                <PaginationBar maxPages={totalCountRepositories} pageNumber={pageNumber} />
+                <PaginationBar
+                    maxPages={Math.ceil(totalCountRepositories / appConfig.resultsPerPage)}
+                    pageNumber={pageNumber}
+                    onClickFirstPage={() => handlePageNavigation('first')}
+                    onClickPreviousPage={() => handlePageNavigation('previous')}
+                    onClickNextPage={() => handlePageNavigation('next')}
+                    onClickLastPage={() => handlePageNavigation('last')}
+                />
             </div>
         </section>
     );
