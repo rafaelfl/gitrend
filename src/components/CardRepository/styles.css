@@ -36,10 +36,15 @@
     font-size: 1.6rem;
     font-weight: 500;
     gap: 0.8rem;
+    max-width: 85%;
+    overflow: hidden;
 }
 
 .card__title > span {
     line-height: 1.6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .card__content {

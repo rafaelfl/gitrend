@@ -36,8 +36,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
     const clearSearchFilters = useCallback(() => {
         setLanguageVal('any');
         setSearchText('');
-        setOnlyFavorite(false);
-    }, [setLanguageVal, setSearchText, setOnlyFavorite]);
+    }, [setLanguageVal, setSearchText]);
 
     const handlePageNavigation = useCallback(
         (navEvent: NavigationEventTypes) => {
@@ -63,26 +62,36 @@ export const SectionTrendingRepos = (): JSX.Element => {
                 dispatch(fetchRepositoryData({ page: newPageNumber }));
             }
         },
-        [pageNumber, totalCountRepositories, appConfig],
+        [dispatch, pageNumber, totalCountRepositories, appConfig, setPageNumber],
     );
 
     useEffect(() => {
         dispatch(fetchRepositoryData({}));
-    }, []);
+    }, [dispatch]);
+
+    const handleSearch = useCallback(() => {
+        dispatch(fetchRepositoryData({ language: languageVal, text: searchText }));
+    }, [dispatch, languageVal, searchText]);
 
     return (
         <section className="trending-repos-container">
             <div className="trending-repos-container__header">
                 <h2>Trending Repositories</h2>
                 <div className="tools">
-                    <div className="search-box">
+                    <div className="search-box" style={onlyFavorite ? { backgroundColor: '#e8e8e8' } : {}}>
                         <input
                             type="search"
                             className="search-box__input"
                             placeholder="Type and press enter to search..."
                             aria-label="Search input. Type and press enter to search"
                             value={searchText}
+                            disabled={onlyFavorite}
                             onChange={(e) => setSearchText(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    handleSearch();
+                                }
+                            }}
                         />
                         <img src={searchIcon} alt="search" />
                     </div>
@@ -94,9 +103,17 @@ export const SectionTrendingRepos = (): JSX.Element => {
                         selectedValue={languageVal}
                         onChange={(val) => setLanguageVal(val)}
                         description="Select the language to search"
+                        disabled={onlyFavorite}
                     />
 
-                    <button className="clear-button" onClick={clearSearchFilters}>
+                    <button
+                        className="clear-button"
+                        disabled={onlyFavorite}
+                        onClick={() => {
+                            clearSearchFilters();
+                            dispatch(fetchRepositoryData({}));
+                        }}
+                    >
                         <i className="fas fa-times fa-lg clear-button__icon"></i> Clear search filters
                     </button>
 

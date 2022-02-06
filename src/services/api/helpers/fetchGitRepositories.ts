@@ -10,7 +10,7 @@ export const fetchGitRepositoriesAndUsers = async (
 ): Promise<FetchGitRepositoriesAndUsersResponse> => {
     let queryString = `language:${language} created:>${createDate}`;
 
-    if (!text?.trim()) {
+    if (text?.trim()) {
         queryString += ` ${text} in:name,description,readme`;
     }
 
