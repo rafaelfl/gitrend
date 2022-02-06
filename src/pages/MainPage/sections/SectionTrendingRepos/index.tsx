@@ -1,14 +1,27 @@
-import { CardRepository, SelectionMenu, Switch } from '../../../../components';
+import { CardRepository, Loading, SelectionMenu, Switch } from '../../../../components';
 import searchIcon from '../../../../assets/images/search-icon.svg';
 import './styles.css';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { appConfig } from '../../../../config';
 import PaginationBar from './components/PaginationBar';
+import {
+    selectRepositoryList,
+    selectRepositoryStoreError,
+    selectRepositoryStoreStatus,
+    selectTotalCountRepositories,
+} from '../../../../store/features/gitRepository';
+import { useAppDispatch, useAppSelector } from '../../../../hooks';
+import { GitRepository } from '../../../../types';
+import { fetchRepositoryData } from '../../../../store/features/gitRepository/thunks';
 
 export const SectionTrendingRepos = (): JSX.Element => {
-    const cards = Array(10).fill(0);
+    const dispatch = useAppDispatch();
 
-    const maxPages = 1010101;
+    const statusRepositories = useAppSelector(selectRepositoryStoreStatus);
+    const errorRepositories: string | undefined = useAppSelector(selectRepositoryStoreError);
+
+    const repositoryList: GitRepository[] = useAppSelector(selectRepositoryList);
+    const totalCountRepositories: number = useAppSelector(selectTotalCountRepositories);
 
     const [languageVal, setLanguageVal] = useState('any');
     const [searchText, setSearchText] = useState('');
@@ -21,6 +34,45 @@ export const SectionTrendingRepos = (): JSX.Element => {
         setSearchText('');
         setOnlyFavorite(false);
     }, [setLanguageVal, setSearchText, setOnlyFavorite]);
+
+    useEffect(() => {
+        dispatch(fetchRepositoryData({}));
+    }, []);
+
+    const renderRepositoryList = useCallback(() => {
+        if (statusRepositories === 'rejected') {
+            return (
+                <div style={{ width: '100%', fontSize: '1.5rem' }}>
+                    An error occurred fetching the data from GitHub: {errorRepositories}
+                </div>
+            );
+        }
+
+        if (statusRepositories === 'loading') {
+            return (
+                <div style={{ width: '100%' }}>
+                    <Loading />
+                </div>
+            );
+        }
+
+        return (
+            <div className="trending-repos-container__grid">
+                {repositoryList.map((repo, index) => (
+                    <CardRepository
+                        key={index}
+                        title={repo.name}
+                        description={repo.description}
+                        language={repo.language}
+                        stars={repo.starsCount}
+                        forks={repo.forksCount}
+                        isFavorite={false}
+                        url={repo.htmlUrl}
+                    />
+                ))}
+            </div>
+        );
+    }, [repositoryList, errorRepositories, statusRepositories]);
 
     return (
         <section className="trending-repos-container">
@@ -55,32 +107,16 @@ export const SectionTrendingRepos = (): JSX.Element => {
                     <div className="favorite-filter">
                         <Switch
                             checked={onlyFavorite}
-                            onChange={() => {
-                                console.log('clicado', onlyFavorite);
-                                setOnlyFavorite(!onlyFavorite);
-                            }}
+                            onChange={() => setOnlyFavorite(!onlyFavorite)}
                             description="Show only your favorite repositories"
                         />
                         <span>Show only favorites</span>
                     </div>
                 </div>
             </div>
-            <div className="trending-repos-container__grid">
-                {cards.map((_, index) => (
-                    <CardRepository
-                        key={index}
-                        title="microsoft / PowerToys"
-                        description="Small educational project developed with the objective of presenting the concepts related to the development of backend REST APIs with Node.js for the course Distributed Systems (2021.2) of the Computer Engineering Course - Federal University of Maranhão (UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)"
-                        language="C#"
-                        stars={67934}
-                        forks={3816}
-                        isFavorite={false}
-                        url="https://github.com/microsoft/terminal"
-                    />
-                ))}
-            </div>
+            {renderRepositoryList()}
             <div className="trending-repos-container__footer">
-                <PaginationBar maxPages={maxPages} pageNumber={pageNumber} />
+                <PaginationBar maxPages={totalCountRepositories} pageNumber={pageNumber} />
             </div>
         </section>
     );

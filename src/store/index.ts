@@ -1,12 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from './features/counter/counterSlice';
+import gitRepositoryReducer from './features/gitRepository';
 
 export const store = configureStore({
     reducer: {
-        counter: counterReducer,
+        gitRepository: gitRepositoryReducer,
     },
 });
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;

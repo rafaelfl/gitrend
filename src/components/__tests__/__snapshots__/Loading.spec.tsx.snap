@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading component tests it should match snapshot 1`] = `
+<div>
+  <div
+    class="sc-eCImPb iMA-DPx"
+    width="80"
+  >
+    <div
+      class="lds-ring"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</div>
+`;
