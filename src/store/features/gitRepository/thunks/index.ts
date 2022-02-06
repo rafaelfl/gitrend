@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { repositoryDataUpdate } from '..';
 import { api } from '../../../../services';
 import { GitRepository } from '../../../../types';
+import { userDataUpdate } from '../../gitUser';
 
 type fetchRepositoryDataParams = {
     page?: number;
@@ -22,8 +23,10 @@ export const fetchRepositoryData = createAsyncThunk(
                 createDate,
             );
 
-            // TODO: load users data
+            // updating data of the users (the repository owners)
+            dispatch(userDataUpdate({ data: gitUsersList }));
 
+            // updating data of the repositories
             dispatch(
                 repositoryDataUpdate({
                     data: gitRepositoryList,

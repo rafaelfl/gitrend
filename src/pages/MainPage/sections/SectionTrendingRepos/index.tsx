@@ -60,7 +60,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
             <div className="trending-repos-container__grid">
                 {repositoryList.map((repo, index) => (
                     <CardRepository
-                        key={index}
+                        key={`${repo.id}-${index}`}
                         title={repo.name}
                         description={repo.description}
                         language={repo.language}

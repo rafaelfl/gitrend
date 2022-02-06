@@ -1,10 +1,16 @@
 .avatar-container {
+    position: relative;
     width: 100px;
     height: 100px;
     flex: 0 0 auto;
     border: none;
     padding: 0.5rem;
     overflow: visible;
+    transition: opacity, transform 0.2s ease-in-out;
+}
+
+.avatar-container:hover {
+    transform: scale(1.05);
 }
 
 .avatar-container__button {
@@ -19,11 +25,6 @@
     cursor: pointer;
     box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
     opacity: 1;
-    transition: opacity, transform 0.2s ease-in-out;
-}
-
-.avatar-container__button:hover {
-    transform: scale(1.05);
 }
 
 .avatar-container__button:active {
@@ -32,4 +33,31 @@
 
 .avatar-container__button:focus {
     outline: #000 solid 2px;
+}
+
+.avatar-container__label {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 1rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    width: 80%;
+    text-align: center;
+    border: 0;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0.1rem 0.3rem;
+    pointer-events: none;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

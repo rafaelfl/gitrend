@@ -6,7 +6,7 @@ exports[`ListView component tests it should match snapshot 1`] = `
     class="sc-bdvvtL dvUyWp"
   >
     <div
-      class="sc-gsDKAQ fLhTaS"
+      class="sc-gsDKAQ jMWrOX"
     >
       <button>
         Button1
@@ -19,14 +19,14 @@ exports[`ListView component tests it should match snapshot 1`] = `
       </button>
     </div>
     <button
-      class="sc-hKwDye iTQbgI"
+      class="sc-hKwDye iMvXya"
     >
       <i
         class="fas fa-angle-left"
       />
     </button>
     <button
-      class="sc-dkPtRN dVshSW"
+      class="sc-dkPtRN fyxqWQ"
     >
       <i
         class="fas fa-angle-right"

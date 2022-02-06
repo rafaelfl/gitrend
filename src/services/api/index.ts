@@ -1,5 +1,5 @@
 import { FetchGitRepositoriesAndUsersResponse } from './types';
-import { fetchGitRepositoriesAndUsers } from './helpers/fetchGitRepositoriesAndUsers';
+import { fetchGitRepositoriesAndUsers } from './helpers/fetchGitRepositories';
 
 interface ApiService {
     fetchGitRepositoriesAndUsers: (

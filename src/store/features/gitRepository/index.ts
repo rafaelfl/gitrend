@@ -4,8 +4,9 @@ import { GitRepository } from '../../../types';
 import { fetchRepositoryData } from './thunks';
 
 /*
- * Repository data
+ * GitHub Repository data
  */
+
 type RequestState = 'idle' | 'loading' | 'rejected';
 
 interface GitRepositoryDataState {

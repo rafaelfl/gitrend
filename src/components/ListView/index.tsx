@@ -20,7 +20,7 @@ export const ListView = ({ children }: ListViewProps): JSX.Element => {
             const maxScrollLeft = scrollSlots.scrollWidth - scrollSlots.clientWidth;
 
             setShowLeftButton(scrollLeft > 0);
-            setShowRightButton(scrollLeft < maxScrollLeft);
+            setShowRightButton(scrollLeft + 2 < maxScrollLeft);
         }
     }, []);
 
@@ -28,7 +28,7 @@ export const ListView = ({ children }: ListViewProps): JSX.Element => {
         const scrollSlots = scrollSlotsRef.current;
 
         if (scrollSlots) {
-            scrollSlots.scrollBy({ left: -100, behavior: 'smooth' });
+            scrollSlots.scrollBy({ left: -350, behavior: 'smooth' });
         }
     }, []);
 
@@ -36,7 +36,7 @@ export const ListView = ({ children }: ListViewProps): JSX.Element => {
         const scrollSlots = scrollSlotsRef.current;
 
         if (scrollSlots) {
-            scrollSlots.scrollBy({ left: 100, behavior: 'smooth' });
+            scrollSlots.scrollBy({ left: 350, behavior: 'smooth' });
         }
     }, []);
 

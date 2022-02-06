@@ -8,17 +8,23 @@ export const fetchGitRepositoriesAndUsers = async (
 ): Promise<FetchGitRepositoriesAndUsersResponse> => {
     const fetchUrl = `https://api.github.com/search/repositories?q=created:%3E${createDate}&sort=stars&order=desc&page=${page}&per_page=${perPage}`;
 
-    const response = await fetch(fetchUrl);
+    const response = await fetch(fetchUrl, {
+        headers: {
+            'Content-Type': 'application/json',
+            accept: 'application/vnd.github.v3+json',
+        },
+    });
 
     if (!response.ok) {
         throw new Error('Error fetching git data');
     }
 
     const data = await response.json();
-
     const totalCount = data['total_count'];
 
-    const gitRepositoryList: GitRepository[] = data.items.map((item: GenericMap) => {
+    const items: GenericMap[] = data['items'];
+
+    const gitRepositoryList: GitRepository[] = items.map((item: GenericMap) => {
         const repo: GitRepository = {
             id: item.id ?? '',
             name: item.name ?? '',
@@ -34,8 +40,8 @@ export const fetchGitRepositoriesAndUsers = async (
         return repo;
     });
 
-    const gitUsersList: GitUser[] = data.items.map((item: GenericMap) => {
-        const owner = item['owner'];
+    const gitUsersList: GitUser[] = items.reduce((acc: GitUser[], currentUser: GenericMap) => {
+        const owner = currentUser['owner'];
 
         const user: GitUser = {
             id: owner.id ?? '',
@@ -44,8 +50,12 @@ export const fetchGitRepositoriesAndUsers = async (
             htmlUrl: owner.html_url ?? '',
         };
 
-        return user;
-    });
+        if (!acc.find((u: GitUser) => u.id === user.id)) {
+            acc.push(user);
+        }
+
+        return acc;
+    }, []);
 
     return {
         totalCount,
