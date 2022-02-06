@@ -62,6 +62,23 @@
     opacity: 0.6;
 }
 
+.clear-button {
+    border: 0;
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.clear-button__icon {
+    color: red;
+}
+
+.clear-button:hover {
+    opacity: 0.6;
+}
+
 .favorite-filter {
     display: flex;
     flex: 0 0 auto;

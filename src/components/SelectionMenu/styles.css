@@ -14,7 +14,7 @@ details[open='true'] > summary:first-of-type {
 }
 
 .select__text {
-    text-align: right;
+    text-align: left;
     font-weight: 600;
 }
 

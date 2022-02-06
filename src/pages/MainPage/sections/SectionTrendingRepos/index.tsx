@@ -1,10 +1,14 @@
 import { CardRepository, SelectionMenu, Switch } from '../../../../components';
 import searchIcon from '../../../../assets/images/search-icon.svg';
 import './styles.css';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export const SectionTrendingRepos = (): JSX.Element => {
     const languageList = [
+        {
+            label: 'Any',
+            value: 'any',
+        },
         {
             label: 'C++',
             value: 'cpp',
@@ -25,7 +29,16 @@ export const SectionTrendingRepos = (): JSX.Element => {
 
     const cards = Array(10).fill(0);
 
+    const [languageVal, setLanguageVal] = useState('any');
+    const [searchText, setSearchText] = useState('');
+
     const [onlyFavorite, setOnlyFavority] = useState(false);
+
+    const clearSearchFilters = useCallback(() => {
+        setLanguageVal('any');
+        setSearchText('');
+        setOnlyFavority(false);
+    }, [setLanguageVal, setSearchText, setOnlyFavority]);
 
     return (
         <section className="trending-repos-container">
@@ -37,6 +50,8 @@ export const SectionTrendingRepos = (): JSX.Element => {
                             type="search"
                             className="search-box__input"
                             placeholder="Type and press enter to search..."
+                            value={searchText}
+                            onChange={(e) => setSearchText(e.target.value)}
                         />
                         <img src={searchIcon} alt="search" />
                     </div>
@@ -45,7 +60,13 @@ export const SectionTrendingRepos = (): JSX.Element => {
                         selectedOptionLabel="Language:"
                         menuLabel="Select the language"
                         menuItems={languageList}
+                        selectedValue={languageVal}
+                        onChange={(val) => setLanguageVal(val)}
                     />
+
+                    <div className="clear-button" role="button" onClick={clearSearchFilters}>
+                        <i className="fas fa-times fa-lg clear-button__icon"></i> Clear search filters
+                    </div>
 
                     <div className="favorite-filter">
                         <Switch

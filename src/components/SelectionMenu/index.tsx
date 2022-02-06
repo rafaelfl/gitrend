@@ -12,6 +12,7 @@ interface SelectionMenuProps {
     selectedOptionLabel: string;
     menuLabel: string;
     menuItems: MenuItemProps[];
+    selectedValue: string;
     onChange?: (value: string) => void;
 }
 
@@ -19,15 +20,15 @@ export const SelectionMenu = ({
     selectedOptionLabel,
     menuLabel,
     menuItems,
+    selectedValue,
     onChange,
 }: SelectionMenuProps): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedLanguage, setSelectedLanguage] = useState<string>('any');
 
-    const selectedLanguageLabel = useMemo(() => {
-        const selectedItem = menuItems.find((item) => item.value === selectedLanguage);
-        return selectedItem ? selectedItem.label : 'Any';
-    }, [selectedLanguage]);
+    const selectedLabel = useMemo(() => {
+        const selectedItem = menuItems.find((item) => item.value === selectedValue);
+        return selectedItem ? selectedItem.label : '-';
+    }, [selectedValue]);
 
     const onToggleMenu = useCallback(
         (e) => {
@@ -40,11 +41,9 @@ export const SelectionMenu = ({
     const handleClickItem = useCallback(
         (e) => {
             const value = e.target.id;
-            setSelectedLanguage(value);
-
             onChange && onChange(value);
         },
-        [setSelectedLanguage, onChange],
+        [onChange],
     );
 
     const menuRef = useRef<HTMLDetailsElement>(null);
@@ -54,24 +53,18 @@ export const SelectionMenu = ({
     return (
         <details className="select" ref={menuRef} open={isOpen} onClick={onToggleMenu}>
             <summary className="select__summary" role="button">
-                {selectedOptionLabel} <span className="select__text">{selectedLanguageLabel}</span>
+                {selectedOptionLabel} <span className="select__text">{selectedLabel}</span>
             </summary>
 
             <div className="menu">
                 <div className="menu__content">
                     <p className="menu__label">{menuLabel}</p>
-                    <SelectionMenuItem
-                        label="Any"
-                        value="any"
-                        checked={selectedLanguage === 'any'}
-                        onClick={handleClickItem}
-                    />
                     {menuItems.map((item) => (
                         <SelectionMenuItem
                             key={item.value}
                             label={item.label}
                             value={item.value}
-                            checked={selectedLanguage === item.value}
+                            checked={selectedValue === item.value}
                             onClick={handleClickItem}
                         />
                     ))}
