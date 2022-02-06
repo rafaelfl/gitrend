@@ -5,15 +5,17 @@ import './styles.css';
 
 interface AvatarDevProps {
     src?: string;
+    description?: string;
     onClick?: () => void;
 }
 
-export const AvatarDev = ({ src, onClick }: AvatarDevProps): JSX.Element => {
+export const AvatarDev = ({ src, description, onClick }: AvatarDevProps): JSX.Element => {
     const backgroundImage = useMemo(() => src ?? octocatAvatar, [src]);
     return (
         <div className="avatar-container">
             <button
                 className="avatar-container__button"
+                aria-label={description ?? 'Repository Button'}
                 style={{ backgroundImage: `url(${backgroundImage})` }}
                 onClick={onClick}
             />

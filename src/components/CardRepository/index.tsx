@@ -30,12 +30,17 @@ export const CardRepository = ({
 
     return (
         <div className="card">
-            <button className="card__favorite" onClick={onFavoriteClick}>
+            <button
+                className="card__favorite"
+                aria-label={`Make the ${title} repository as favorite`}
+                onClick={onFavoriteClick}
+            >
                 {isFavorite ? <i className="fas fa-heart fa-lg"></i> : <i className="far fa-heart fa-lg"></i>}
             </button>
             <div className="card__title">
                 <svg
-                    aria-hidden="true"
+                    aria-label="repository icon"
+                    role="img"
                     height="16"
                     viewBox="0 0 16 16"
                     version="1.1"
@@ -57,7 +62,7 @@ export const CardRepository = ({
                 <span>{` ${language}`}</span>
                 <span className="card__stars">
                     <svg
-                        aria-label="star"
+                        aria-label="star icon"
                         role="img"
                         height="12"
                         viewBox="0 0 16 16"
@@ -74,7 +79,7 @@ export const CardRepository = ({
                 </span>
                 <span className="card__fork">
                     <svg
-                        aria-label="fork"
+                        aria-label="fork icon"
                         role="img"
                         height="12"
                         viewBox="0 0 16 16"

@@ -3,6 +3,7 @@
 exports[`SelectionMenu component tests it should match snapshot 1`] = `
 <div>
   <details
+    aria-label="Selection menu"
     class="select"
   >
     <summary
@@ -37,6 +38,7 @@ exports[`SelectionMenu component tests it should match snapshot 1`] = `
 exports[`SelectionMenu component tests it should match snapshot 2`] = `
 <div>
   <details
+    aria-label="Selection menu"
     class="select"
   >
     <summary
@@ -63,6 +65,7 @@ exports[`SelectionMenu component tests it should match snapshot 2`] = `
           Select one option
         </p>
         <button
+          aria-label="Select Any option"
           class="menu__item"
           id="any"
         >
@@ -74,6 +77,7 @@ exports[`SelectionMenu component tests it should match snapshot 2`] = `
           Any
         </button>
         <button
+          aria-label="Select Test1 option"
           class="menu__item"
           id="test1"
         >
@@ -85,6 +89,7 @@ exports[`SelectionMenu component tests it should match snapshot 2`] = `
           Test1
         </button>
         <button
+          aria-label="Select Test2 option"
           class="menu__item"
           id="test2"
         >

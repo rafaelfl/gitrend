@@ -7,9 +7,9 @@ export const SectionTrendingDevs = (): JSX.Element => {
         <section className="trending-devs-container">
             <h2>Trending Developers</h2>
             <ListView>
-                <AvatarDev src="https://avatars.githubusercontent.com/u/31193433?v=4" />
+                <AvatarDev description="" src="https://avatars.githubusercontent.com/u/31193433?v=4" />
                 <AvatarDev />
-                <AvatarDev src="https://avatars.githubusercontent.com/u/31193433?v=4" />
+                <AvatarDev description="" src="https://avatars.githubusercontent.com/u/31193433?v=4" />
                 <AvatarDev />
             </ListView>
         </section>

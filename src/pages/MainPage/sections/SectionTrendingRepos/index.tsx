@@ -32,6 +32,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
                             type="search"
                             className="search-box__input"
                             placeholder="Type and press enter to search..."
+                            aria-label="Search input. Type and press enter to search"
                             value={searchText}
                             onChange={(e) => setSearchText(e.target.value)}
                         />
@@ -40,15 +41,16 @@ export const SectionTrendingRepos = (): JSX.Element => {
 
                     <SelectionMenu
                         selectedOptionLabel="Language:"
-                        menuLabel="Select the language"
+                        menuLabel="Select the language to search"
                         menuItems={appConfig.languageList}
                         selectedValue={languageVal}
                         onChange={(val) => setLanguageVal(val)}
+                        description="Select the language to search"
                     />
 
-                    <div className="clear-button" role="button" onClick={clearSearchFilters}>
+                    <button className="clear-button" onClick={clearSearchFilters}>
                         <i className="fas fa-times fa-lg clear-button__icon"></i> Clear search filters
-                    </div>
+                    </button>
 
                     <div className="favorite-filter">
                         <Switch
@@ -57,6 +59,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
                                 console.log('clicado', onlyFavorite);
                                 setOnlyFavorite(!onlyFavorite);
                             }}
+                            description="Show only your favorite repositories"
                         />
                         <span>Show only favorites</span>
                     </div>

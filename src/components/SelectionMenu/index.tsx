@@ -14,6 +14,7 @@ interface SelectionMenuProps {
     menuItems: MenuItemProps[];
     selectedValue: string;
     onChange?: (value: string) => void;
+    description?: string;
 }
 
 export const SelectionMenu = ({
@@ -22,6 +23,7 @@ export const SelectionMenu = ({
     menuItems,
     selectedValue,
     onChange,
+    description,
 }: SelectionMenuProps): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -51,7 +53,13 @@ export const SelectionMenu = ({
     useOutsideClickDetector(menuRef, () => setIsOpen(false));
 
     return (
-        <details className="select" ref={menuRef} open={isOpen} onClick={onToggleMenu}>
+        <details
+            aria-label={description ?? 'Selection menu'}
+            className="select"
+            ref={menuRef}
+            open={isOpen}
+            onClick={onToggleMenu}
+        >
             <summary className="select__summary" role="button">
                 {selectedOptionLabel} <span className="select__text">{selectedLabel}</span>
             </summary>

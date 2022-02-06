@@ -1,8 +1,27 @@
 .pagination-bar {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
     padding: 0.5rem 1rem;
     font-size: 1.2rem;
     color: black;
+}
+
+@media (min-width: 420px) {
+    .pagination-bar {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+.pagination-bar__button-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .pagination-bar__label {

@@ -48,17 +48,8 @@ details[open='true'] > summary:first-of-type {
 
 @media (min-width: 671px) {
     .menu {
-        position: absolute;
-        top: 2rem;
         left: inherit;
         right: 0;
-        border-radius: 0.5rem;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        max-height: 400px;
-        width: 200px;
-        overflow-y: scroll;
-        overflow-x: hidden;
     }
 }
 
