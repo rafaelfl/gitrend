@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { GitRepository } from '../../../../types';
 import { fetchRepositoryData } from '../../../../store/features/gitRepository/thunks';
 import { ErrorMessage } from '../../components/ErrorMessage';
+import { RepositoryList } from './components/RepositoryList';
 
 type NavigationEventTypes = 'first' | 'previous' | 'next' | 'last';
 
@@ -69,42 +70,6 @@ export const SectionTrendingRepos = (): JSX.Element => {
         dispatch(fetchRepositoryData({}));
     }, []);
 
-    const renderRepositoryList = useCallback(() => {
-        if (statusRepositories === 'rejected') {
-            return (
-                <ErrorMessage
-                    errorTitle="An error occurred fetching the data from GitHub:"
-                    errorMessage={errorRepositories}
-                />
-            );
-        }
-
-        if (statusRepositories === 'loading') {
-            return (
-                <div style={{ width: '100%' }}>
-                    <Loading />
-                </div>
-            );
-        }
-
-        return (
-            <div className="trending-repos-container__grid">
-                {repositoryList.map((repo, index) => (
-                    <CardRepository
-                        key={`${repo.id}-${index}`}
-                        title={repo.name}
-                        description={repo.description}
-                        language={repo.language}
-                        stars={repo.starsCount}
-                        forks={repo.forksCount}
-                        isFavorite={false}
-                        url={repo.htmlUrl}
-                    />
-                ))}
-            </div>
-        );
-    }, [repositoryList, errorRepositories, statusRepositories]);
-
     return (
         <section className="trending-repos-container">
             <div className="trending-repos-container__header">
@@ -145,7 +110,11 @@ export const SectionTrendingRepos = (): JSX.Element => {
                     </div>
                 </div>
             </div>
-            {renderRepositoryList()}
+            <RepositoryList
+                statusRepositories={statusRepositories}
+                errorRepositories={errorRepositories}
+                repositoryList={repositoryList}
+            />
             <div className="trending-repos-container__footer">
                 <PaginationBar
                     maxPages={Math.ceil(totalCountRepositories / appConfig.resultsPerPage)}
