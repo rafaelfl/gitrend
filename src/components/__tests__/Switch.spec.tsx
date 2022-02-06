@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Switch } from '..';
 
@@ -64,5 +64,33 @@ describe('Switch component tests', () => {
         rerender(<Switch checked={isChecked} onChange={onChange} />);
 
         expect(checkbox).not.toBeChecked();
+    });
+
+    test('it should change the checked state on enter keydown', () => {
+        let isChecked = false;
+
+        const onChange = jest.fn(() => {
+            isChecked = !isChecked;
+        });
+
+        const { rerender, container } = render(<Switch checked={isChecked} onChange={onChange} />);
+
+        const switchContainer = container;
+        const checkbox = switchContainer.querySelector('input[type="checkbox"]') as Element;
+        const spanCheckbox = switchContainer.querySelector('span');
+
+        expect(switchContainer).toBeInTheDocument();
+        expect(checkbox).toBeInTheDocument();
+        expect(spanCheckbox).toBeInTheDocument();
+
+        fireEvent.keyDown(checkbox, { key: 'A' });
+        fireEvent.keyDown(checkbox, { key: 'Enter' });
+
+        expect(onChange).toHaveBeenCalledTimes(1);
+        expect(isChecked).toEqual(true);
+
+        rerender(<Switch checked={isChecked} onChange={onChange} />);
+
+        expect(checkbox).toBeChecked();
     });
 });
