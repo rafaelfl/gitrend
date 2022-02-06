@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ListView } from '..';
 
@@ -49,5 +49,29 @@ describe('ListView component tests', () => {
 
         userEvent.click(buttons[2]);
         expect(onClick).toBeCalledTimes(1);
+    });
+
+    test('it should call the scrollBy event when the ListView is scrolled', () => {
+        const onWheel = jest.fn();
+        window.HTMLElement.prototype.scrollBy = onWheel;
+
+        const { getByTestId, unmount } = render(
+            <ListView>
+                <button>Button1</button>
+                <button>Button2</button>
+                <button>Button3</button>
+            </ListView>,
+        );
+
+        const scrollSlots = getByTestId('@ListView/scrollSlot');
+
+        expect(scrollSlots).toBeInTheDocument();
+
+        fireEvent.wheel(scrollSlots, { deltaY: +100 });
+        fireEvent.wheel(scrollSlots, { deltaY: -100 });
+
+        expect(onWheel).toBeCalled();
+
+        unmount();
     });
 });
