@@ -2,43 +2,25 @@ import { CardRepository, SelectionMenu, Switch } from '../../../../components';
 import searchIcon from '../../../../assets/images/search-icon.svg';
 import './styles.css';
 import { useCallback, useState } from 'react';
+import { appConfig } from '../../../../config';
+import PaginationBar from './components/PaginationBar';
 
 export const SectionTrendingRepos = (): JSX.Element => {
-    const languageList = [
-        {
-            label: 'Any',
-            value: 'any',
-        },
-        {
-            label: 'C++',
-            value: 'cpp',
-        },
-        {
-            label: 'Dart',
-            value: 'dart',
-        },
-        {
-            label: 'Javascript',
-            value: 'javascript',
-        },
-        {
-            label: 'Typescript',
-            value: 'typescript',
-        },
-    ];
-
     const cards = Array(10).fill(0);
+
+    const maxPages = 1010101;
 
     const [languageVal, setLanguageVal] = useState('any');
     const [searchText, setSearchText] = useState('');
+    const [pageNumber, setPageNumber] = useState(1);
 
-    const [onlyFavorite, setOnlyFavority] = useState(false);
+    const [onlyFavorite, setOnlyFavorite] = useState(false);
 
     const clearSearchFilters = useCallback(() => {
         setLanguageVal('any');
         setSearchText('');
-        setOnlyFavority(false);
-    }, [setLanguageVal, setSearchText, setOnlyFavority]);
+        setOnlyFavorite(false);
+    }, [setLanguageVal, setSearchText, setOnlyFavorite]);
 
     return (
         <section className="trending-repos-container">
@@ -59,7 +41,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
                     <SelectionMenu
                         selectedOptionLabel="Language:"
                         menuLabel="Select the language"
-                        menuItems={languageList}
+                        menuItems={appConfig.languageList}
                         selectedValue={languageVal}
                         onChange={(val) => setLanguageVal(val)}
                     />
@@ -73,7 +55,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
                             checked={onlyFavorite}
                             onChange={() => {
                                 console.log('clicado', onlyFavorite);
-                                setOnlyFavority(!onlyFavorite);
+                                setOnlyFavorite(!onlyFavorite);
                             }}
                         />
                         <span>Show only favorites</span>
@@ -85,7 +67,6 @@ export const SectionTrendingRepos = (): JSX.Element => {
                     <CardRepository
                         key={index}
                         title="microsoft / PowerToys"
-                        // description="Windows system utilities to maximize productivity"
                         description="Small educational project developed with the objective of presenting the concepts related to the development of backend REST APIs with Node.js for the course Distributed Systems (2021.2) of the Computer Engineering Course - Federal University of Maranhão (UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)(UFMA)"
                         language="C#"
                         stars={67934}
@@ -94,6 +75,9 @@ export const SectionTrendingRepos = (): JSX.Element => {
                         url="https://github.com/microsoft/terminal"
                     />
                 ))}
+            </div>
+            <div className="trending-repos-container__footer">
+                <PaginationBar maxPages={maxPages} pageNumber={pageNumber} />
             </div>
         </section>
     );
