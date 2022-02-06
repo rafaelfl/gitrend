@@ -1,5 +1,6 @@
 export const appConfig = {
     resultsPerPage: 30,
+    favoriteRepositoriesKey: 'favoriteRepositories',
     languageList: [
         {
             label: 'Any',

@@ -1,4 +1,9 @@
 import { CardRepository, Loading } from '../../../../../../components';
+import { useAppDispatch } from '../../../../../../hooks';
+import {
+    tagRepositoryAsFavorite,
+    untagRepositoryAsFavorite,
+} from '../../../../../../store/features/gitRepository/thunks';
 import { GitRepository } from '../../../../../../types';
 import { ErrorMessage } from '../../../../components/ErrorMessage';
 
@@ -11,6 +16,8 @@ interface RepositoryListProps {
 }
 
 export const RepositoryList = ({ statusRepositories, errorRepositories, repositoryList }: RepositoryListProps) => {
+    const dispatch = useAppDispatch();
+
     if (statusRepositories === 'rejected') {
         return (
             <ErrorMessage
@@ -48,8 +55,15 @@ export const RepositoryList = ({ statusRepositories, errorRepositories, reposito
                     language={repo.language}
                     stars={repo.starsCount}
                     forks={repo.forksCount}
-                    isFavorite={false}
+                    isFavorite={repo.isFavorite}
                     url={repo.htmlUrl}
+                    onFavoriteClick={() => {
+                        if (!repo.isFavorite) {
+                            dispatch(tagRepositoryAsFavorite(repo.id));
+                        } else {
+                            dispatch(untagRepositoryAsFavorite(repo.id));
+                        }
+                    }}
                 />
             ))}
         </div>

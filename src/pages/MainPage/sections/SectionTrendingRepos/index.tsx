@@ -13,7 +13,6 @@ import {
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { GitRepository } from '../../../../types';
 import { fetchRepositoryData } from '../../../../store/features/gitRepository/thunks';
-import { ErrorMessage } from '../../components/ErrorMessage';
 import { RepositoryList } from './components/RepositoryList';
 
 type NavigationEventTypes = 'first' | 'previous' | 'next' | 'last';
@@ -66,9 +65,12 @@ export const SectionTrendingRepos = (): JSX.Element => {
     );
 
     useEffect(() => {
+        // fetch the data from GitHub API on page loaded
         dispatch(fetchRepositoryData({}));
+        // dispatch(loadFavoriteRepositories());
     }, [dispatch]);
 
+    // search data after enter is typed in the search input
     const handleSearch = useCallback(() => {
         dispatch(fetchRepositoryData({ language: languageVal, text: searchText }));
     }, [dispatch, languageVal, searchText]);

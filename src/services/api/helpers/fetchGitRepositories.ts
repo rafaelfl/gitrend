@@ -52,6 +52,7 @@ export const fetchGitRepositoriesAndUsers = async (
             language: item.language ?? '',
             forksCount: item.forks_count ?? 0,
             starsCount: item.stargazers_count ?? 0,
+            isFavorite: false,
         };
 
         return repo;
