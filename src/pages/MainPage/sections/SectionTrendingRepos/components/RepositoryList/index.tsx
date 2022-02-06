@@ -28,6 +28,16 @@ export const RepositoryList = ({ statusRepositories, errorRepositories, reposito
         );
     }
 
+    if (repositoryList.length === 0) {
+        return (
+            <ErrorMessage
+                errorTitle="There are no trending repositories at the moment."
+                errorMessage="Please change the search parameters and try again."
+                hideErrorIcon={true}
+            />
+        );
+    }
+
     return (
         <div className="trending-repos-container__grid">
             {repositoryList.map((repo, index) => (

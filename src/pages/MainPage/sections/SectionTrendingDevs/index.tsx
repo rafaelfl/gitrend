@@ -32,6 +32,16 @@ export const SectionTrendingDevs = (): JSX.Element => {
             );
         }
 
+        if (usersList.length === 0) {
+            return (
+                <ErrorMessage
+                    errorTitle="There are no trending developers at the moment."
+                    errorMessage="Please change the search parameters and try again."
+                    hideErrorIcon={true}
+                />
+            );
+        }
+
         return (
             <ListView>
                 {usersList.map((user, index) => (
