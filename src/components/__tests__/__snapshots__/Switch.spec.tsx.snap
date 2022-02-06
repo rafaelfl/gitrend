@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch component tests it should match snapshot 1`] = `
+<div>
+  <label
+    class="sc-eCImPb dYRvzG"
+  >
+    <input
+      checked=""
+      type="checkbox"
+    />
+    <span />
+  </label>
+</div>
+`;
+
+exports[`Switch component tests it should match snapshot 2`] = `
+<div>
+  <label
+    class="sc-eCImPb dYRvzG"
+  >
+    <input
+      type="checkbox"
+    />
+    <span />
+  </label>
+</div>
+`;

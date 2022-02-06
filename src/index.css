@@ -1,29 +1,60 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root {
+    --background-color: #f3f6fd;
+    --light-grey: #f7f7f8;
+    --dark-grey: #1f1c2e;
 }
 
 html,
 body {
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* Disable Android highlight */
-  min-height: -webkit-fill-available;
-  min-height: 100vh;
-  min-width: 100vw;
-  height: -webkit-fill-available; /* We have to fix html height */
-  height: 100%;
-  overflow-x: hidden;
-  font-size: 62.5%; /* font-size 1em = 10px on default browser settings */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  background-color: #fafafa;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* Disable Android highlight */
+    min-height: -webkit-fill-available;
+    min-height: 100vh;
+    min-width: 100vw;
+    height: -webkit-fill-available; /* We have to fix html height */
+    overflow-x: hidden;
+    font-size: 62.5%; /* font-size 1em = 10px on default browser settings */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+        'Droid Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--background-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
 
+h1 {
+    color: black;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+h2 {
+    color: #333;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+h1,
+h2 {
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    padding: 1rem 0;
+}

@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectionMenu component tests it should match snapshot 1`] = `
+<div>
+  <details
+    class="select"
+  >
+    <summary
+      class="select__summary"
+      role="button"
+    >
+      Selected option:
+       
+      <span
+        class="select__text"
+      >
+        -
+      </span>
+    </summary>
+    <div
+      class="menu"
+    >
+      <div
+        class="menu__content"
+      >
+        <p
+          class="menu__label"
+        >
+          Select one option
+        </p>
+      </div>
+    </div>
+  </details>
+</div>
+`;
+
+exports[`SelectionMenu component tests it should match snapshot 2`] = `
+<div>
+  <details
+    class="select"
+  >
+    <summary
+      class="select__summary"
+      role="button"
+    >
+      Selected option:
+       
+      <span
+        class="select__text"
+      >
+        Any
+      </span>
+    </summary>
+    <div
+      class="menu"
+    >
+      <div
+        class="menu__content"
+      >
+        <p
+          class="menu__label"
+        >
+          Select one option
+        </p>
+        <button
+          class="menu__item"
+          id="any"
+        >
+          <i
+            class="fas fa-check"
+            style="opacity: 1;"
+          />
+             
+          Any
+        </button>
+        <button
+          class="menu__item"
+          id="test1"
+        >
+          <i
+            class="fas fa-check"
+            style="opacity: 0;"
+          />
+             
+          Test1
+        </button>
+        <button
+          class="menu__item"
+          id="test2"
+        >
+          <i
+            class="fas fa-check"
+            style="opacity: 0;"
+          />
+             
+          Test2
+        </button>
+      </div>
+    </div>
+  </details>
+</div>
+`;

@@ -1,0 +1,23 @@
+.root-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 3rem 4rem;
+}
+
+.root-container__header {
+    display: flex;
+    flex: 1;
+}
+
+.root-container__content {
+    display: flex;
+    flex: 8;
+    flex-direction: column;
+}
+
+.root-container__footer {
+    display: flex;
+    flex: 1;
+    background-color: yellow;
+}
