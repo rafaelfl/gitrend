@@ -16,14 +16,29 @@ type fetchRepositoryDataParams = {
 export const fetchRepositoryData = createAsyncThunk(
     'gitRepository/fetchRepositoryData',
     async (
-        { page = 1, perPage = 30, createDate = '2017-01-10', language = 'any', text = '' }: fetchRepositoryDataParams,
+        { page = 1, perPage = 30, createDate, language = 'any', text = '' }: fetchRepositoryDataParams,
         { dispatch },
     ): Promise<void> => {
+        let dateStr: string = '';
+
+        if (!createDate) {
+            const d = new Date();
+            d.setDate(d.getDate() - 7);
+
+            const year = d.getFullYear();
+            const month = d.getMonth() + 1;
+            const day = d.getDate();
+
+            dateStr = `${year}-${('0' + month).slice(-2)}-${('0' + day).slice(-2)}`;
+        } else {
+            dateStr = createDate;
+        }
+
         try {
             const { totalCount, gitRepositoryList, gitUsersList } = await api.fetchGitRepositoriesAndUsers(
                 page,
                 perPage,
-                createDate,
+                dateStr,
                 language,
                 text,
             );
