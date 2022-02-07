@@ -11,6 +11,14 @@
     overflow: hidden;
     color: black;
     gap: 0.5rem;
+    transition: all ease-in-out 0.2s;
+    transform: scale(1);
+    background-color: var(--background-color);
+}
+
+.card:hover {
+    transform: scale(1.02);
+    background-color: #fff;
 }
 
 .card__favorite {

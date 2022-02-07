@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import repoIcon from '../../assets/images/repo-icon.svg';
 import './styles.css';
 
 interface CardRepositoryProps {
