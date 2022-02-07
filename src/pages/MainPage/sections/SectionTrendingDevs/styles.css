@@ -1,6 +1,6 @@
 .trending-devs-container {
     display: flex;
-    flex: 1;
+    flex: 0 0 165px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
