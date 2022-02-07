@@ -377,7 +377,7 @@ describe('Integration tests of the MainPage', () => {
 
         localStorage.setItem('favoriteRepositories', JSON.stringify(localStorageData));
 
-        // filter the favorite repositories
+        // filter only the favorite repositories
         userEvent.click(screen.getByTestId('@Switch/container'));
 
         // there are only one favorite repository
@@ -386,6 +386,9 @@ describe('Integration tests of the MainPage', () => {
         // search fields disabled
         expect(screen.getByTestId('@SearchInput')).toBeDisabled();
         expect(screen.getByTestId('@ClearSearchFilters')).toBeDisabled();
+
+        // try to click in the selection menu, but it will not affect (because it is disabled)
+        userEvent.click(screen.getByLabelText('Select Any option'));
 
         // navigation is disabled while filtering the favorite repositories
         expect(screen.getByText(/0 of 0/)).toBeInTheDocument();
@@ -459,5 +462,11 @@ describe('Integration tests of the MainPage', () => {
         // the repository is not favorited
         expect(screen.getAllByTestId('@CardRepository/favorite')).toHaveLength(3);
         expect(screen.getAllByTestId('@CardRepository/favorite')[0]?.firstChild).toHaveClass('far fa-heart fa-lg');
+
+        // filter only the favorite repositories
+        userEvent.click(screen.getByTestId('@Switch/container'));
+
+        expect(screen.getByText(/0 of 0/)).toBeInTheDocument();
+        expect(screen.getByText(/There are no favorite repositories!/)).toBeInTheDocument();
     });
 });

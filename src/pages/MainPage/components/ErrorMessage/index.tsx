@@ -17,7 +17,7 @@ export const ErrorMessage = ({ errorTitle, errorMessage, hideErrorIcon }: ErrorM
                 )}
                 {` ${errorTitle}`}
             </h3>
-            <p className="error-message__message">{errorMessage ?? ''}</p>
+            <p className="error-message__message">{errorMessage}</p>
         </div>
     );
 };
