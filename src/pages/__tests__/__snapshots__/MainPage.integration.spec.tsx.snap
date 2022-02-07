@@ -167,6 +167,19 @@ exports[`Integration tests of the MainPage it should match the snapshot 1`] = `
                     Assembly
                   </button>
                   <button
+                    aria-label="Select CSS option"
+                    class="menu__item"
+                    data-testid="@SelectionMenu/item"
+                    id="css"
+                  >
+                    <i
+                      class="fas fa-check"
+                      style="opacity: 0;"
+                    />
+                       
+                    CSS
+                  </button>
+                  <button
                     aria-label="Select C++ option"
                     class="menu__item"
                     data-testid="@SelectionMenu/item"
@@ -206,6 +219,32 @@ exports[`Integration tests of the MainPage it should match the snapshot 1`] = `
                     Dart
                   </button>
                   <button
+                    aria-label="Select HTML option"
+                    class="menu__item"
+                    data-testid="@SelectionMenu/item"
+                    id="HTML"
+                  >
+                    <i
+                      class="fas fa-check"
+                      style="opacity: 0;"
+                    />
+                       
+                    HTML
+                  </button>
+                  <button
+                    aria-label="Select Java option"
+                    class="menu__item"
+                    data-testid="@SelectionMenu/item"
+                    id="java"
+                  >
+                    <i
+                      class="fas fa-check"
+                      style="opacity: 0;"
+                    />
+                       
+                    Java
+                  </button>
+                  <button
                     aria-label="Select Javascript option"
                     class="menu__item"
                     data-testid="@SelectionMenu/item"
@@ -217,6 +256,32 @@ exports[`Integration tests of the MainPage it should match the snapshot 1`] = `
                     />
                        
                     Javascript
+                  </button>
+                  <button
+                    aria-label="Select PHP option"
+                    class="menu__item"
+                    data-testid="@SelectionMenu/item"
+                    id="php"
+                  >
+                    <i
+                      class="fas fa-check"
+                      style="opacity: 0;"
+                    />
+                       
+                    PHP
+                  </button>
+                  <button
+                    aria-label="Select Python option"
+                    class="menu__item"
+                    data-testid="@SelectionMenu/item"
+                    id="python"
+                  >
+                    <i
+                      class="fas fa-check"
+                      style="opacity: 0;"
+                    />
+                       
+                    Python
                   </button>
                   <button
                     aria-label="Select Typescript option"
@@ -619,7 +684,19 @@ exports[`Integration tests of the MainPage it should match the snapshot 1`] = `
     </main>
     <footer
       class="root-container__footer"
-    />
+    >
+      <span>
+        Developed with 💜 by Rafael Fernandes Lopes for
+         
+        <a
+          href="http://veed.io/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Veed.io
+        </a>
+      </span>
+    </footer>
   </div>
 </div>
 `;

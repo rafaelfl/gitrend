@@ -95,8 +95,14 @@
     display: flex;
     flex: 0 0 auto;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
     width: 100%;
+}
+
+@media (min-width: 480px) {
+    .trending-repos-container__footer {
+        justify-content: flex-end;
+    }
 }

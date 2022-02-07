@@ -40,17 +40,27 @@ export const RepositoryList = ({
         );
     }
 
-    if (repositoryList.length === 0) {
+    const repoList = showOnlyFavorites ? favoriteRepositories : repositoryList;
+
+    if (repoList.length === 0) {
+        if (showOnlyFavorites) {
+            return (
+                <ErrorMessage
+                    errorTitle="There are no favorite repositories!"
+                    errorMessage="When you tag a repository, it will appear here."
+                    hideErrorIcon={true}
+                />
+            );
+        }
+
         return (
             <ErrorMessage
-                errorTitle="There are no trending repositories at the moment."
+                errorTitle="There are no trending repositories at the moment"
                 errorMessage="Please change the search parameters and try again."
                 hideErrorIcon={true}
             />
         );
     }
-
-    const repoList = showOnlyFavorites ? favoriteRepositories : repositoryList;
 
     return (
         <div className="trending-repos-container__grid">

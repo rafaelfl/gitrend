@@ -59,10 +59,8 @@ export const SectionTrendingRepos = (): JSX.Element => {
                     break;
             }
 
-            if (newPageNumber >= 1 && newPageNumber <= Math.ceil(totalCountRepositories / appConfig.resultsPerPage)) {
-                setPageNumber(newPageNumber);
-                dispatch(fetchRepositoryData({ page: newPageNumber, language: languageVal, text: searchText }));
-            }
+            setPageNumber(newPageNumber);
+            dispatch(fetchRepositoryData({ page: newPageNumber, language: languageVal, text: searchText }));
         },
         [dispatch, pageNumber, totalCountRepositories, appConfig, setPageNumber],
     );
@@ -70,7 +68,6 @@ export const SectionTrendingRepos = (): JSX.Element => {
     useEffect(() => {
         // fetch the data from GitHub API on page loaded
         dispatch(fetchRepositoryData({}));
-        // dispatch(loadFavoriteRepositories());
     }, [dispatch]);
 
     // search data after enter is typed in the search input
@@ -94,11 +91,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
                             disabled={onlyFavorites}
                             data-testid="@SearchInput"
                             onChange={(e) => setSearchText(e.target.value)}
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter') {
-                                    handleSearch();
-                                }
-                            }}
+                            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                         />
                         <img src={searchIcon} alt="search" />
                     </div>
