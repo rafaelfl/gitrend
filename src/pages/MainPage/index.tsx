@@ -11,7 +11,14 @@ const MainPage = (): JSX.Element => {
                 <SectionTrendingDevs />
                 <SectionTrendingRepos />
             </main>
-            <footer className="root-container__footer" />
+            <footer className="root-container__footer">
+                <span>
+                    Developed with 💜 by Rafael Fernandes Lopes for{' '}
+                    <a href="http://veed.io/" target="_blank" rel="noreferrer">
+                        Veed.io
+                    </a>
+                </span>
+            </footer>
         </div>
     );
 };

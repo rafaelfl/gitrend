@@ -684,7 +684,19 @@ exports[`Integration tests of the MainPage it should match the snapshot 1`] = `
     </main>
     <footer
       class="root-container__footer"
-    />
+    >
+      <span>
+        Developed with 💜 by Rafael Fernandes Lopes for
+         
+        <a
+          href="http://veed.io/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Veed.io
+        </a>
+      </span>
+    </footer>
   </div>
 </div>
 `;
