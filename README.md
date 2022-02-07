@@ -1,44 +1,118 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# GiTrend
 
-## Available Scripts
+![Licença](https://img.shields.io/badge/license-MIT-brightgreen)
 
-In the project directory, you can run:
+## About
 
-### `npm start`
+<p align="center">Project which allows the search for trending repositories in GitHub
+</p>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Table of Contents
+=================
 
-### `npm test`
+   * [About](#about)
+   * [Table of Contents](#table-of-contents)
+   * [Project Description](#-project-description)
+   * [Prerequisites](#-prerequisites)
+   * [Installation](#-installation)
+   * [Technologies](#-technologies)
+   * [Author](#-author)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 💻 Project Description
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The project was developed to allow the search of trending repositories in GitHub. It was structured to show the configuration of a [React.js](https://reactjs.org/) project using [Husky](https://typicode.github.io/husky/#/), [lint-staged](https://github.com/okonet/lint-staged), [eslint](https://eslint.org/), [prettier](https://prettier.io/) and [commitlint](https://commitlint.js.org/#/) with [conventional commits](conventionalcommits.org/). The project also shows how to implement unit and integration tests with [React Testing Library](https://testing-library.com/). [Redux](https://redux.js.org/) was used as state manager with [Redux Toolkit](https://redux-toolkit.js.org/) and [Redux Thunk](https://github.com/reduxjs/redux-thunk) for implementing asynchronous communication middlewares in order to consume the [GitHub API](https://docs.github.com/en/rest).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Screenshots:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<table>
+  <tr>
+    <td>Main screen</td>
+    <td>Main screen with the favorites filter activated</td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/screenshot1.png" width=450></td>
+    <td><img src="screenshots/screenshot2.png" width=450></td>
+  </tr>
+  <tr>
+    <td>Responsive main screen with language menu</td>
+    <td>Responsive main screen with text search</td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/screenshot3.png" width=250></td>
+    <td><img src="screenshots/screenshot4.png" width=250></td>
+  </tr>
+ </table>
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<a name="prerequisites"></a>
+## ⚙️ Prerequisites
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Before starting, you need [Node.js](https://nodejs.org/en/), [Yarn](https://yarnpkg.com/) and [Git](https://git-scm.com/) installed and configured.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+# Clone this repository
+$ git clone https://github.com/rafaelfl/gitrend
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Enter in the project folder in terminal/cmd
+$ cd gitrend
+```
 
-## Learn More
+## 🚀 Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+After installing the tools and the source code, you can install the dependencies and run the project.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+# Install dependencies
+$ yarn install
+
+# Run the project using the following syntax
+$ yarn start
+```
+
+The application will be available on `http://localhost:3000`.
+
+Some interesting commands:
+
+- `yarn build` - build the page for deploying
+- `yarn test` - run the unit and integration tests
+- `yarn test:cov` - run the tests and show the coverage report
+- `yarn lint` - run the linter to identify some problems in code
+- `yarn lint:fix` - run the linter to identify and fix problems in code
+- `yarn prettier` - run the prettier formatter
+
+Furthermore, the Husky is configured to verify commit messages incompatible with the "Conventional Commits" standard, as well as to run the linter and prettier in the code.
+
+---
+
+## 🛠 Technologies
+
+- [TypeScript](https://www.typescriptlang.org)
+- [React.js](https://reactjs.org/docs/getting-started.html)
+- [Yarn](https://yarnpkg.com)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk)
+- [React Testing Library](https://testing-library.com/)
+- [Mock Service Worker](https://mswjs.io/)
+- [Husky](https://typicode.github.io/husky/#/)
+- [eslint](https://eslint.org/)
+- [lint-staged](https://github.com/okonet/lint-staged)
+- [prettier](https://prettier.io/)
+- [commitlint](https://commitlint.js.org/#/)
+
+---
+
+## 🦸 Author
+
+<a href="https://github.com/rafaelfl/">
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/31193433?v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Rafael Fernandes Lopes</b></sub></a>
+
+
+Developed with 💜 by Rafael Fernandes Lopes
+
+[![Linkedin Badge](https://img.shields.io/badge/-Rafael%20Fernandes%20Lopes-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rafael-fernandes-lopes/)](https://www.linkedin.com/in/rafael-fernandes-lopes/)

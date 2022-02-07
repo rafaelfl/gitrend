@@ -74,7 +74,7 @@
             "!src/config/index.ts"
         ],
         "coverageReporters": [
-            "lcov"
+            "text"
         ],
         "resetMocks": false
     }
