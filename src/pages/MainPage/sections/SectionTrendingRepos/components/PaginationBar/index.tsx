@@ -20,9 +20,10 @@ const PaginationBar = ({
     onClickLastPage,
 }: PaginationBarProps): JSX.Element => {
     return (
-        <div className="pagination-bar">
+        <div className="pagination-bar" data-testid="@PaginationBar/container">
             <span className="pagination-bar__button-panel">
                 <button
+                    data-testid="@PaginationBar/first-page"
                     aria-label="Back to the first page"
                     className="pagination-bar__button"
                     disabled={pageNumber === 1 || maxPages === 0 || !onClickFirstPage || disabled}
@@ -31,6 +32,7 @@ const PaginationBar = ({
                     <i className="fas fa-angle-double-left fa-lg"></i>
                 </button>
                 <button
+                    data-testid="@PaginationBar/previous-page"
                     aria-label="Back to the previous page"
                     className="pagination-bar__button"
                     disabled={pageNumber === 1 || maxPages === 0 || !onClickPreviousPage || disabled}
@@ -44,6 +46,7 @@ const PaginationBar = ({
                 </span>
 
                 <button
+                    data-testid="@PaginationBar/next-page"
                     aria-label="Go to the next page"
                     className="pagination-bar__button"
                     disabled={pageNumber === maxPages || maxPages === 0 || !onClickNextPage || disabled}
@@ -52,6 +55,7 @@ const PaginationBar = ({
                     <i className="fas fa-angle-right fa-lg"></i>
                 </button>
                 <button
+                    data-testid="@PaginationBar/last-page"
                     aria-label="Go to the last page"
                     className="pagination-bar__button"
                     disabled={pageNumber === maxPages || maxPages === 0 || !onClickLastPage || disabled}

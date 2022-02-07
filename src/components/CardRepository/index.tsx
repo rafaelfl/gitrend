@@ -23,13 +23,14 @@ export const CardRepository = ({
     url,
 }: CardRepositoryProps): JSX.Element => {
     const resumedDescription = useMemo(
-        () => (description.length > 100 ? description.substring(0, 247) + '...' : description),
+        () => (description?.length > 100 ? description.substring(0, 247) + '...' : description),
         [description],
     );
 
     return (
-        <div className="card">
+        <div className="card" data-testid="@CardRepository/container">
             <button
+                data-testid="@CardRepository/favorite"
                 className="card__favorite"
                 aria-label={`Make the ${title} repository as favorite`}
                 onClick={onFavoriteClick}

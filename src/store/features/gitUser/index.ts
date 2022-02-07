@@ -6,11 +6,11 @@ import { GitRepository, GitUser } from '../../../types';
  * GitHub Users data
  */
 
-interface GitUserDataState {
+export interface GitUserDataState {
     data: GitUser[];
 }
 
-const initialState: GitUserDataState = {
+export const initialState: GitUserDataState = {
     data: [],
 };
 

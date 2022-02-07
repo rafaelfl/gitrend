@@ -6,7 +6,7 @@ interface LoadingProps {
 
 export const Loading = ({ width = 80 }: LoadingProps): JSX.Element => {
     return (
-        <LoadingContainer width={width}>
+        <LoadingContainer data-testid="@Loading" width={width}>
             <div className="lds-ring">
                 <div></div>
                 <div></div>

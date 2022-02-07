@@ -58,7 +58,9 @@
         "eslint-plugin-react": "^7.28.0",
         "eslint-plugin-react-hooks": "^4.3.0",
         "husky": "^7.0.4",
+        "jest-localstorage-mock": "^2.4.18",
         "lint-staged": "^12.3.3",
+        "msw": "^0.36.8",
         "prettier": "^2.5.1"
     },
     "jest": {
@@ -72,7 +74,7 @@
             "!src/config/index.ts"
         ],
         "coverageReporters": [
-            "lcov"
+            "text"
         ],
         "resetMocks": false
     }

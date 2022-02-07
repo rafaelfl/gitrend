@@ -1,10 +1,6 @@
-import { useCallback } from 'react';
 import { CardRepository, Loading } from '../../../../../../components';
 import { useAppDispatch } from '../../../../../../hooks';
-import {
-    tagRepositoryAsFavorite,
-    untagRepositoryAsFavorite,
-} from '../../../../../../store/features/gitRepository/thunks';
+import { tagRepositoryAsFavorite, untagRepositoryAsFavorite } from '../../../../../../store/features/gitRepository';
 import { GitRepository } from '../../../../../../types';
 import { ErrorMessage } from '../../../../components/ErrorMessage';
 

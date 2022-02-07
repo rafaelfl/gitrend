@@ -47,7 +47,7 @@ export const SectionTrendingDevs = (): JSX.Element => {
                 {usersList.map((user, index) => (
                     <AvatarDev
                         key={`${user.id}-${index}`}
-                        description={`Repository of ${user.username}`}
+                        description={`GitHub of ${user.username}`}
                         name={user.username}
                         src={user.avatarUrl}
                         onClick={() => window.open(user.htmlUrl, '_blank', 'noreferrer')}

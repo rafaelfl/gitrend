@@ -33,7 +33,13 @@ export const fetchRepositoryData = createAsyncThunk(
 
             //// loading favorite repositories from the local storage
             // read data from the localStorage
-            const localStorageData = JSON.parse(localStorage.getItem(appConfig.favoriteRepositoriesKey) ?? '[]');
+            let localStorageData;
+
+            try {
+                localStorageData = JSON.parse(localStorage.getItem(appConfig.favoriteRepositoriesKey) ?? '[]');
+            } catch (e) {
+                localStorageData = [];
+            }
 
             // this conversion is done because the localStorage can be edited in the browser
             // so, in order to avoid any type errors, we convert the localStorageData to a GitRepository[]

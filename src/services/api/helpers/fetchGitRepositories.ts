@@ -43,15 +43,15 @@ export const fetchGitRepositoriesAndUsers = async (
     // creating repository entities
     const gitRepositoryList: GitRepository[] = items.map((item: GenericMap) => {
         const repo: GitRepository = {
-            id: item.id ?? '',
-            name: item.name ?? '',
-            fullName: item.full_name ?? '',
-            isPrivate: item.private ?? false,
-            htmlUrl: item.html_url ?? '',
-            description: item.description ?? '',
-            language: item.language ?? '',
-            forksCount: item.forks_count ?? 0,
-            starsCount: item.stargazers_count ?? 0,
+            id: `${item.id}`,
+            name: item.name,
+            fullName: item.full_name,
+            isPrivate: item.private,
+            htmlUrl: item.html_url,
+            description: item.description,
+            language: item.language,
+            forksCount: item.forks_count,
+            starsCount: item.stargazers_count,
             isFavorite: false,
         };
 
@@ -63,10 +63,10 @@ export const fetchGitRepositoriesAndUsers = async (
         const owner = currentUser['owner'];
 
         const user: GitUser = {
-            id: owner.id ?? '',
-            username: owner.login ?? '',
-            avatarUrl: owner.avatar_url ?? '',
-            htmlUrl: owner.html_url ?? '',
+            id: `${owner.id}`,
+            username: owner.login,
+            avatarUrl: owner.avatar_url,
+            htmlUrl: owner.html_url,
         };
 
         if (!acc.find((u: GitUser) => u.id === user.id)) {

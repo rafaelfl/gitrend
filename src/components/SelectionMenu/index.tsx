@@ -59,6 +59,7 @@ export const SelectionMenu = ({
 
     return (
         <details
+            data-testid="@SelectionMenu/container"
             aria-label={description ?? 'Selection menu'}
             className="select"
             ref={menuRef}
@@ -66,7 +67,7 @@ export const SelectionMenu = ({
             style={disabled ? { opacity: 0.4 } : {}}
             onClick={onToggleMenu}
         >
-            <summary className="select__summary" role="button">
+            <summary data-testid="@SelectionMenu/summary" className="select__summary" role="button">
                 {selectedOptionLabel} <span className="select__text">{selectedLabel}</span>
             </summary>
 

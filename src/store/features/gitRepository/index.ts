@@ -7,9 +7,9 @@ import { fetchRepositoryData } from './thunks';
  * GitHub Repository data
  */
 
-type RequestState = 'idle' | 'loading' | 'rejected';
+export type RequestState = 'idle' | 'loading' | 'rejected';
 
-interface GitRepositoryDataState {
+export interface GitRepositoryDataState {
     data: GitRepository[];
     totalCountRepositories: number;
     favoriteRepositories: GitRepository[];
@@ -17,7 +17,7 @@ interface GitRepositoryDataState {
     status: RequestState;
 }
 
-const initialState: GitRepositoryDataState = {
+export const initialState: GitRepositoryDataState = {
     data: [],
     totalCountRepositories: 0,
     favoriteRepositories: [],
@@ -69,7 +69,7 @@ const gitRepositorySlice = createSlice({
             }
 
             // we add the repository to the favorite list
-            state.favoriteRepositories.push(action.payload);
+            state.favoriteRepositories.push({ ...action.payload, isFavorite: true });
 
             // update the isFavorite attribute of the data array
             state.data = state.data.map((repo: GitRepository) => {
@@ -114,6 +114,8 @@ const gitRepositorySlice = createSlice({
 });
 
 export const { repositoryDataUpdate, addFavoriteRepository, removeFavoriteRepository } = gitRepositorySlice.actions;
+
+export * from './thunks';
 
 export const selectRepositoryList = (state: RootState) => state.gitRepository.data;
 export const selectTotalCountRepositories = (state: RootState) => state.gitRepository.totalCountRepositories;

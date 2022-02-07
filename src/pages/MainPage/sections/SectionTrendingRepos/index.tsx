@@ -10,10 +10,10 @@ import {
     selectRepositoryStoreError,
     selectRepositoryStoreStatus,
     selectTotalCountRepositories,
+    fetchRepositoryData,
 } from '../../../../store/features/gitRepository';
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { GitRepository } from '../../../../types';
-import { fetchRepositoryData } from '../../../../store/features/gitRepository/thunks';
 import { RepositoryList } from './components/RepositoryList';
 
 type NavigationEventTypes = 'first' | 'previous' | 'next' | 'last';
@@ -92,6 +92,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
                             aria-label="Search input. Type and press enter to search"
                             value={searchText}
                             disabled={onlyFavorites}
+                            data-testid="@SearchInput"
                             onChange={(e) => setSearchText(e.target.value)}
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter') {
@@ -113,6 +114,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
                     />
 
                     <button
+                        data-testid="@ClearSearchFilters"
                         className="clear-button"
                         disabled={onlyFavorites}
                         onClick={() => {

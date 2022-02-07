@@ -5,10 +5,12 @@ exports[`Switch component tests it should match snapshot 1`] = `
   <label
     aria-label="Switch button"
     class="sc-jRQBWg krnHGF"
+    data-testid="@Switch/container"
     tabindex="0"
   >
     <input
       checked=""
+      data-testid="@Switch/checkbox"
       type="checkbox"
     />
     <span />
@@ -21,9 +23,11 @@ exports[`Switch component tests it should match snapshot 2`] = `
   <label
     aria-label="Switch button"
     class="sc-jRQBWg krnHGF"
+    data-testid="@Switch/container"
     tabindex="0"
   >
     <input
+      data-testid="@Switch/checkbox"
       type="checkbox"
     />
     <span />

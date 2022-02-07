@@ -4,10 +4,12 @@ exports[`AvatarDev component tests it should match snapshot 1`] = `
 <div>
   <div
     class="avatar-container"
+    data-testid="@AvatarDev/container"
   >
     <button
       aria-label="Repository Button"
       class="avatar-container__button"
+      data-testid="@AvatarDev/button"
       style="background-image: url(octocat.svg);"
     />
   </div>

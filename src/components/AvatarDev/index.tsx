@@ -13,14 +13,19 @@ interface AvatarDevProps {
 export const AvatarDev = ({ name, src, description, onClick }: AvatarDevProps): JSX.Element => {
     const backgroundImage = useMemo(() => src ?? octocatAvatar, [src]);
     return (
-        <div className="avatar-container">
+        <div className="avatar-container" data-testid="@AvatarDev/container">
             <button
+                data-testid="@AvatarDev/button"
                 className="avatar-container__button"
                 aria-label={description ?? 'Repository Button'}
                 style={{ backgroundImage: `url(${backgroundImage})` }}
                 onClick={onClick}
             />
-            {name && <div className="avatar-container__label">{name}</div>}
+            {name && (
+                <div data-testid="@AvatarDev/label" className="avatar-container__label">
+                    {name}
+                </div>
+            )}
         </div>
     );
 };
