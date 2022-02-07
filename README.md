@@ -25,6 +25,8 @@
 
 The project was developed to allow the search of trending repositories in GitHub. It was structured to show the configuration of a [React.js](https://reactjs.org/) project using [Husky](https://typicode.github.io/husky/#/), [lint-staged](https://github.com/okonet/lint-staged), [eslint](https://eslint.org/), [prettier](https://prettier.io/) and [commitlint](https://commitlint.js.org/#/) with [conventional commits](conventionalcommits.org/). The project also shows how to implement unit and integration tests with [React Testing Library](https://testing-library.com/). [Redux](https://redux.js.org/) was used as state manager with [Redux Toolkit](https://redux-toolkit.js.org/) and [Redux Thunk](https://github.com/reduxjs/redux-thunk) for implementing asynchronous communication middlewares in order to consume the [GitHub API](https://docs.github.com/en/rest).
 
+[Live preview](https://gitrend.netlify.app)
+
 ### Screenshots:
 
 <table>
