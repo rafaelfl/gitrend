@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { appConfig } from '../../../../config';
 import PaginationBar from './components/PaginationBar';
 import {
+    selectFavoriteRepositories,
     selectRepositoryList,
     selectRepositoryStoreError,
     selectRepositoryStoreStatus,
@@ -26,11 +27,13 @@ export const SectionTrendingRepos = (): JSX.Element => {
     const repositoryList: GitRepository[] = useAppSelector(selectRepositoryList);
     const totalCountRepositories: number = useAppSelector(selectTotalCountRepositories);
 
+    const favoriteRepositories: GitRepository[] = useAppSelector(selectFavoriteRepositories);
+
     const [languageVal, setLanguageVal] = useState('any');
     const [searchText, setSearchText] = useState('');
     const [pageNumber, setPageNumber] = useState(1);
 
-    const [onlyFavorite, setOnlyFavorite] = useState(false);
+    const [onlyFavorites, setOnlyFavorite] = useState(false);
 
     const clearSearchFilters = useCallback(() => {
         setLanguageVal('any');
@@ -58,7 +61,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
 
             if (newPageNumber >= 1 && newPageNumber <= Math.ceil(totalCountRepositories / appConfig.resultsPerPage)) {
                 setPageNumber(newPageNumber);
-                dispatch(fetchRepositoryData({ page: newPageNumber }));
+                dispatch(fetchRepositoryData({ page: newPageNumber, language: languageVal, text: searchText }));
             }
         },
         [dispatch, pageNumber, totalCountRepositories, appConfig, setPageNumber],
@@ -72,7 +75,8 @@ export const SectionTrendingRepos = (): JSX.Element => {
 
     // search data after enter is typed in the search input
     const handleSearch = useCallback(() => {
-        dispatch(fetchRepositoryData({ language: languageVal, text: searchText }));
+        setPageNumber(1);
+        dispatch(fetchRepositoryData({ language: languageVal, text: searchText, page: 1 }));
     }, [dispatch, languageVal, searchText]);
 
     return (
@@ -80,14 +84,14 @@ export const SectionTrendingRepos = (): JSX.Element => {
             <div className="trending-repos-container__header">
                 <h2>Trending Repositories</h2>
                 <div className="tools">
-                    <div className="search-box" style={onlyFavorite ? { backgroundColor: '#e8e8e8' } : {}}>
+                    <div className="search-box" style={onlyFavorites ? { backgroundColor: '#e8e8e8' } : {}}>
                         <input
                             type="search"
                             className="search-box__input"
                             placeholder="Type and press enter to search..."
                             aria-label="Search input. Type and press enter to search"
                             value={searchText}
-                            disabled={onlyFavorite}
+                            disabled={onlyFavorites}
                             onChange={(e) => setSearchText(e.target.value)}
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter') {
@@ -105,12 +109,12 @@ export const SectionTrendingRepos = (): JSX.Element => {
                         selectedValue={languageVal}
                         onChange={(val) => setLanguageVal(val)}
                         description="Select the language to search"
-                        disabled={onlyFavorite}
+                        disabled={onlyFavorites}
                     />
 
                     <button
                         className="clear-button"
-                        disabled={onlyFavorite}
+                        disabled={onlyFavorites}
                         onClick={() => {
                             clearSearchFilters();
                             dispatch(fetchRepositoryData({}));
@@ -121,8 +125,8 @@ export const SectionTrendingRepos = (): JSX.Element => {
 
                     <div className="favorite-filter">
                         <Switch
-                            checked={onlyFavorite}
-                            onChange={() => setOnlyFavorite(!onlyFavorite)}
+                            checked={onlyFavorites}
+                            onChange={() => setOnlyFavorite(!onlyFavorites)}
                             description="Show only your favorite repositories"
                         />
                         <span>Show only favorites</span>
@@ -133,11 +137,14 @@ export const SectionTrendingRepos = (): JSX.Element => {
                 statusRepositories={statusRepositories}
                 errorRepositories={errorRepositories}
                 repositoryList={repositoryList}
+                showOnlyFavorites={onlyFavorites}
+                favoriteRepositories={favoriteRepositories}
             />
             <div className="trending-repos-container__footer">
                 <PaginationBar
                     maxPages={Math.ceil(totalCountRepositories / appConfig.resultsPerPage)}
                     pageNumber={pageNumber}
+                    disabled={onlyFavorites}
                     onClickFirstPage={() => handlePageNavigation('first')}
                     onClickPreviousPage={() => handlePageNavigation('previous')}
                     onClickNextPage={() => handlePageNavigation('next')}

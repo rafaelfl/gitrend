@@ -3,6 +3,7 @@ import './styles.css';
 interface PaginationBarProps {
     pageNumber: number;
     maxPages: number;
+    disabled?: boolean;
     onClickFirstPage?: () => void;
     onClickPreviousPage?: () => void;
     onClickNextPage?: () => void;
@@ -12,6 +13,7 @@ interface PaginationBarProps {
 const PaginationBar = ({
     pageNumber,
     maxPages,
+    disabled,
     onClickFirstPage,
     onClickPreviousPage,
     onClickNextPage,
@@ -23,7 +25,7 @@ const PaginationBar = ({
                 <button
                     aria-label="Back to the first page"
                     className="pagination-bar__button"
-                    disabled={pageNumber === 1 || maxPages === 0 || !onClickFirstPage}
+                    disabled={pageNumber === 1 || maxPages === 0 || !onClickFirstPage || disabled}
                     onClick={onClickFirstPage}
                 >
                     <i className="fas fa-angle-double-left fa-lg"></i>
@@ -31,20 +33,20 @@ const PaginationBar = ({
                 <button
                     aria-label="Back to the previous page"
                     className="pagination-bar__button"
-                    disabled={pageNumber === 1 || maxPages === 0 || !onClickPreviousPage}
+                    disabled={pageNumber === 1 || maxPages === 0 || !onClickPreviousPage || disabled}
                     onClick={onClickPreviousPage}
                 >
                     <i className="fas fa-angle-left fa-lg"></i>
                 </button>
 
-                <span className="pagination-bar__label">
-                    {maxPages === 0 ? '0 of 0' : `${pageNumber} of ${maxPages}`}
+                <span className="pagination-bar__label" style={disabled ? { color: '#ccc' } : {}}>
+                    {maxPages === 0 || disabled ? '0 of 0' : `${pageNumber} of ${maxPages}`}
                 </span>
 
                 <button
                     aria-label="Go to the next page"
                     className="pagination-bar__button"
-                    disabled={pageNumber === maxPages || maxPages === 0 || !onClickNextPage}
+                    disabled={pageNumber === maxPages || maxPages === 0 || !onClickNextPage || disabled}
                     onClick={onClickNextPage}
                 >
                     <i className="fas fa-angle-right fa-lg"></i>
@@ -52,7 +54,7 @@ const PaginationBar = ({
                 <button
                     aria-label="Go to the last page"
                     className="pagination-bar__button"
-                    disabled={pageNumber === maxPages || maxPages === 0 || !onClickLastPage}
+                    disabled={pageNumber === maxPages || maxPages === 0 || !onClickLastPage || disabled}
                     onClick={onClickLastPage}
                 >
                     <i className="fas fa-angle-double-right fa-lg"></i>

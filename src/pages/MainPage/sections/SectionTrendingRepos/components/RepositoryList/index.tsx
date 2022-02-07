@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { CardRepository, Loading } from '../../../../../../components';
 import { useAppDispatch } from '../../../../../../hooks';
 import {
@@ -13,9 +14,17 @@ interface RepositoryListProps {
     statusRepositories: string;
     errorRepositories: string | undefined;
     repositoryList: GitRepository[];
+    showOnlyFavorites: boolean;
+    favoriteRepositories: GitRepository[];
 }
 
-export const RepositoryList = ({ statusRepositories, errorRepositories, repositoryList }: RepositoryListProps) => {
+export const RepositoryList = ({
+    statusRepositories,
+    errorRepositories,
+    repositoryList,
+    showOnlyFavorites,
+    favoriteRepositories,
+}: RepositoryListProps) => {
     const dispatch = useAppDispatch();
 
     if (statusRepositories === 'rejected') {
@@ -45,9 +54,11 @@ export const RepositoryList = ({ statusRepositories, errorRepositories, reposito
         );
     }
 
+    const repoList = showOnlyFavorites ? favoriteRepositories : repositoryList;
+
     return (
         <div className="trending-repos-container__grid">
-            {repositoryList.map((repo, index) => (
+            {repoList.map((repo, index) => (
                 <CardRepository
                     key={`${repo.id}-${index}`}
                     title={repo.name}
