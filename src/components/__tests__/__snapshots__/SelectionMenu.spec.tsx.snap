@@ -5,9 +5,11 @@ exports[`SelectionMenu component tests it should match snapshot 1`] = `
   <details
     aria-label="Selection menu"
     class="select"
+    data-testid="@SelectionMenu/container"
   >
     <summary
       class="select__summary"
+      data-testid="@SelectionMenu/summary"
       role="button"
     >
       Selected option:
@@ -40,9 +42,11 @@ exports[`SelectionMenu component tests it should match snapshot 2`] = `
   <details
     aria-label="Selection menu"
     class="select"
+    data-testid="@SelectionMenu/container"
   >
     <summary
       class="select__summary"
+      data-testid="@SelectionMenu/summary"
       role="button"
     >
       Selected option:
@@ -67,6 +71,7 @@ exports[`SelectionMenu component tests it should match snapshot 2`] = `
         <button
           aria-label="Select Any option"
           class="menu__item"
+          data-testid="@SelectionMenu/item"
           id="any"
         >
           <i
@@ -79,6 +84,7 @@ exports[`SelectionMenu component tests it should match snapshot 2`] = `
         <button
           aria-label="Select Test1 option"
           class="menu__item"
+          data-testid="@SelectionMenu/item"
           id="test1"
         >
           <i
@@ -91,6 +97,7 @@ exports[`SelectionMenu component tests it should match snapshot 2`] = `
         <button
           aria-label="Select Test2 option"
           class="menu__item"
+          data-testid="@SelectionMenu/item"
           id="test2"
         >
           <i

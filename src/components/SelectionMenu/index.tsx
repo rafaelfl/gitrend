@@ -15,6 +15,7 @@ interface SelectionMenuProps {
     selectedValue: string;
     onChange?: (value: string) => void;
     description?: string;
+    disabled?: boolean;
 }
 
 export const SelectionMenu = ({
@@ -24,6 +25,7 @@ export const SelectionMenu = ({
     selectedValue,
     onChange,
     description,
+    disabled,
 }: SelectionMenuProps): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -35,9 +37,12 @@ export const SelectionMenu = ({
     const onToggleMenu = useCallback(
         (e) => {
             e.preventDefault();
-            setIsOpen(!isOpen);
+
+            if (!disabled) {
+                setIsOpen(!isOpen);
+            }
         },
-        [setIsOpen, isOpen],
+        [setIsOpen, isOpen, disabled],
     );
 
     const handleClickItem = useCallback(
@@ -54,13 +59,15 @@ export const SelectionMenu = ({
 
     return (
         <details
+            data-testid="@SelectionMenu/container"
             aria-label={description ?? 'Selection menu'}
             className="select"
             ref={menuRef}
             open={isOpen}
+            style={disabled ? { opacity: 0.4 } : {}}
             onClick={onToggleMenu}
         >
-            <summary className="select__summary" role="button">
+            <summary data-testid="@SelectionMenu/summary" className="select__summary" role="button">
                 {selectedOptionLabel} <span className="select__text">{selectedLabel}</span>
             </summary>
 

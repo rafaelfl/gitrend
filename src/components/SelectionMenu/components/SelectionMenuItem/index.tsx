@@ -10,7 +10,13 @@ interface SelectionMenuItemProps {
 
 export const SelectionMenuItem = ({ label, value, checked, onClick }: SelectionMenuItemProps): JSX.Element => {
     return (
-        <button id={value} aria-label={`Select ${label} option`} className="menu__item" onClick={onClick}>
+        <button
+            id={value}
+            data-testid="@SelectionMenu/item"
+            aria-label={`Select ${label} option`}
+            className="menu__item"
+            onClick={onClick}
+        >
             <i className="fas fa-check" style={checked ? { opacity: 1 } : { opacity: 0 }}></i> &nbsp; {label}
         </button>
     );

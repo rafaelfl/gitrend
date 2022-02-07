@@ -8,4 +8,5 @@ export interface GitRepository {
     language: string;
     forksCount: number;
     starsCount: number;
+    isFavorite: boolean;
 }

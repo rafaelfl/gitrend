@@ -4,10 +4,12 @@ exports[`CardRepository component tests it should match snapshot 1`] = `
 <div>
   <div
     class="card"
+    data-testid="@CardRepository/container"
   >
     <button
       aria-label="Make the microsoft / PowerToys repository as favorite"
       class="card__favorite"
+      data-testid="@CardRepository/favorite"
     >
       <i
         class="fas fa-heart fa-lg"

@@ -1,0 +1,17 @@
+.error-message {
+    width: 100%;
+}
+
+.error-message__title {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.error-message__title--red {
+    color: red;
+}
+
+.error-message__message {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
