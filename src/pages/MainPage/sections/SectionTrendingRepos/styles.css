@@ -1,0 +1,108 @@
+.trending-repos-container {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+}
+
+.trending-repos-container__header {
+    display: flex;
+    flex: 0 0 80px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.tools {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.search-box {
+    border-radius: 20px;
+    background-color: #fff;
+    padding-right: 12px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    color: var(--light-font);
+    box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
+    overflow: hidden;
+}
+
+.search-box__input {
+    border: none;
+    flex: 1;
+    outline: none;
+    height: 100%;
+    padding: 0 0 0 20px;
+    font-size: 16px;
+    width: calc(100% - 10px);
+    background-color: transparent;
+    color: var(--dark-grey);
+}
+
+.search-input::placeholder {
+    color: var(--dark-grey);
+    opacity: 0.6;
+}
+
+.clear-button {
+    border: 0;
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.clear-button__icon {
+    color: red;
+}
+
+.clear-button:hover {
+    opacity: 0.6;
+}
+
+.favorite-filter {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.trending-repos-container__footer {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+@media (min-width: 480px) {
+    .trending-repos-container__footer {
+        justify-content: flex-end;
+    }
+}

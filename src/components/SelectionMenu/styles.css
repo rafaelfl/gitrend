@@ -1,0 +1,84 @@
+details > summary:first-of-type,
+details[open='true'] > summary:first-of-type {
+    list-style: none;
+}
+
+.select {
+    position: relative;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.select__summary {
+    padding: 0 0.5rem;
+}
+
+.select__summary:hover {
+    opacity: 0.6;
+}
+
+.select__text {
+    text-align: left;
+    font-weight: 600;
+}
+
+.select__text::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: text-bottom;
+    margin-left: 4px;
+    content: '';
+    border: 4px solid;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.menu {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    right: inherit;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 400px;
+    width: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 9999;
+}
+
+@media (min-width: 671px) {
+    .menu {
+        left: inherit;
+        right: 0;
+    }
+}
+
+.menu::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.menu::-webkit-scrollbar-track {
+    background-color: #e8e8e8;
+}
+
+.menu::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+
+.menu__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.menu__label {
+    color: black;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0.8rem 0.6rem;
+    cursor: auto;
+}

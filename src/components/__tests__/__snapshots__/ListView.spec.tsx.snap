@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListView component tests it should match snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdvvtL dvUyWp"
+  >
+    <div
+      class="sc-gsDKAQ jMWrOX"
+      data-testid="@ListView/scrollSlot"
+    >
+      <button>
+        Button1
+      </button>
+      <button>
+        Button2
+      </button>
+      <button>
+        Button3
+      </button>
+    </div>
+    <button
+      class="sc-hKwDye iMvXya"
+    >
+      <i
+        class="fas fa-angle-left"
+      />
+    </button>
+    <button
+      class="sc-dkPtRN fyxqWQ"
+    >
+      <i
+        class="fas fa-angle-right"
+      />
+    </button>
+  </div>
+</div>
+`;
