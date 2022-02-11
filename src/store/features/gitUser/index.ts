@@ -15,7 +15,7 @@ export const initialState: GitUserDataState = {
 };
 
 const gitUserSlice = createSlice({
-    name: 'gitRepository',
+    name: 'gitUser',
     initialState,
     reducers: {
         userDataUpdate: (
