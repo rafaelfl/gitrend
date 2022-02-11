@@ -107,7 +107,7 @@ Furthermore, the Husky is configured to verify commit messages incompatible with
 
 ---
 
-## 🦸 Author
+## 👨‍💻 Author
 
 <a href="https://github.com/rafaelfl/">
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/31193433?v=4" width="100px;" alt=""/>

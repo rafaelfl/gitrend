@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../..';
-import { GitRepository, GitUser } from '../../../types';
+import { GitUser } from '../../../types';
 
 /*
  * GitHub Users data
