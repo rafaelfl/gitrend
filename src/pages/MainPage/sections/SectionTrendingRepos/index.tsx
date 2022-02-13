@@ -15,6 +15,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { GitRepository } from '../../../../types';
 import { RepositoryList } from './components/RepositoryList';
+import { OrderSelector } from '../../components/OrderSelector';
 
 type NavigationEventTypes = 'first' | 'previous' | 'next' | 'last';
 
@@ -32,6 +33,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
     const [languageVal, setLanguageVal] = useState('any');
     const [searchText, setSearchText] = useState('');
     const [pageNumber, setPageNumber] = useState(1);
+    const [descendingOrder, setDescendingOrder] = useState(true);
 
     const [onlyFavorites, setOnlyFavorite] = useState(false);
 
@@ -60,9 +62,16 @@ export const SectionTrendingRepos = (): JSX.Element => {
             }
 
             setPageNumber(newPageNumber);
-            dispatch(fetchRepositoryData({ page: newPageNumber, language: languageVal, text: searchText }));
+            dispatch(
+                fetchRepositoryData({
+                    page: newPageNumber,
+                    language: languageVal,
+                    text: searchText,
+                    desc: descendingOrder,
+                }),
+            );
         },
-        [dispatch, pageNumber, totalCountRepositories, appConfig, setPageNumber],
+        [dispatch, pageNumber, totalCountRepositories, appConfig, setPageNumber, descendingOrder],
     );
 
     useEffect(() => {
@@ -73,8 +82,10 @@ export const SectionTrendingRepos = (): JSX.Element => {
     // search data after enter is typed in the search input
     const handleSearch = useCallback(() => {
         setPageNumber(1);
-        dispatch(fetchRepositoryData({ language: languageVal, text: searchText, page: 1 }));
-    }, [dispatch, languageVal, searchText]);
+        dispatch(
+            fetchRepositoryData({ language: languageVal, text: searchText, page: pageNumber, desc: descendingOrder }),
+        );
+    }, [dispatch, languageVal, searchText, pageNumber, descendingOrder]);
 
     return (
         <section className="trending-repos-container">
@@ -105,6 +116,8 @@ export const SectionTrendingRepos = (): JSX.Element => {
                         description="Select the language to search"
                         disabled={onlyFavorites}
                     />
+
+                    <OrderSelector checked={descendingOrder} onChange={() => setDescendingOrder(!descendingOrder)} />
 
                     <button
                         data-testid="@ClearSearchFilters"

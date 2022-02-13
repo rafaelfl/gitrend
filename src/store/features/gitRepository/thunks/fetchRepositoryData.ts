@@ -11,12 +11,13 @@ type fetchRepositoryDataParams = {
     createDate?: string;
     language?: string;
     text?: string;
+    desc?: boolean;
 };
 
 export const fetchRepositoryData = createAsyncThunk(
     'gitRepository/fetchRepositoryData',
     async (
-        { page = 1, perPage = 30, createDate, language = 'any', text = '' }: fetchRepositoryDataParams,
+        { page = 1, perPage = 30, createDate, language = 'any', text = '', desc = true }: fetchRepositoryDataParams,
         { dispatch },
     ): Promise<void> => {
         let dateStr: string = '';
@@ -41,6 +42,7 @@ export const fetchRepositoryData = createAsyncThunk(
                 dateStr,
                 language,
                 text,
+                desc,
             );
 
             // updating data of the users (the repository owners)

@@ -299,6 +299,40 @@ exports[`Integration tests of the MainPage it should match the snapshot 1`] = `
                 </div>
               </div>
             </details>
+            <label
+              class="order-selector"
+              for="order-selector"
+            >
+              <input
+                class="order-selector__input"
+                id="order-selector"
+                name="order-selector"
+                type="checkbox"
+              />
+              <div
+                class="order-selector__icon"
+              >
+                <span
+                  class="icon icon__top"
+                />
+                <span
+                  class="icon icon__middle"
+                />
+                <span
+                  class="icon icon__bottom"
+                />
+              </div>
+              <div
+                class="order-selector__label order-selector__label--asc"
+              >
+                ASC
+              </div>
+              <div
+                class="order-selector__label order-selector__label--desc"
+              >
+                DESC
+              </div>
+            </label>
             <button
               class="clear-button"
               data-testid="@ClearSearchFilters"

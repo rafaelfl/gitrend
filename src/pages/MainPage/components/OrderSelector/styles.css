@@ -1,0 +1,89 @@
+.order-selector {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    padding: 4px 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.order-selector:hover {
+    opacity: 0.6;
+}
+
+.order-selector__input {
+    display: none;
+}
+
+.order-selector__icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    width: 32px;
+    height: 32px;
+}
+
+.order-selector__label {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000;
+    transition: all 0.3s ease-in-out;
+}
+
+.order-selector__label--desc {
+    transform: translate(-30%, -50%);
+}
+
+.order-selector__label--asc {
+    transform: translate(-30%, -500%);
+}
+
+.order-selector__input:checked ~ .order-selector__label--desc {
+    transform: translate(-30%, 500%);
+}
+
+.order-selector__input:checked ~ .order-selector__label--asc {
+    transform: translate(-30%, -50%);
+}
+
+.icon {
+    display: block;
+    height: 2px;
+    width: 50%;
+    background-color: #000;
+    border-radius: 10rem;
+    border: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.icon__top {
+    width: 50%;
+}
+
+.order-selector__input:checked + .order-selector__icon .icon__top {
+    width: 15%;
+}
+
+.icon__middle {
+    width: 35%;
+}
+
+.order-selector__input:checked + .order-selector__icon .icon__middle {
+    width: 35%;
+}
+
+.icon__bottom {
+    width: 15%;
+}
+
+.order-selector__input:checked + .order-selector__icon .icon__bottom {
+    width: 50%;
+}

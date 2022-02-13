@@ -7,6 +7,7 @@ export const fetchGitRepositoriesAndUsers = async (
     createDate: string,
     language: string,
     text: string,
+    desc: boolean,
 ): Promise<FetchGitRepositoriesAndUsersResponse> => {
     let queryString = `language:${language} created:>=${createDate}`;
 
@@ -16,7 +17,7 @@ export const fetchGitRepositoriesAndUsers = async (
 
     const fetchUrl = `https://api.github.com/search/repositories?q=${encodeURIComponent(
         queryString,
-    )}&sort=stars&order=desc&page=${page}&per_page=${perPage}`;
+    )}&sort=stars&order=${desc ? 'desc' : 'asc'}&page=${page}&per_page=${perPage}`;
 
     const response = await fetch(fetchUrl, {
         headers: {

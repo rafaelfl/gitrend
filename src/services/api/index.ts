@@ -8,6 +8,7 @@ interface ApiService {
         createDate: string,
         language: string,
         text: string,
+        desc: boolean,
     ) => Promise<FetchGitRepositoriesAndUsersResponse>;
 }
 
