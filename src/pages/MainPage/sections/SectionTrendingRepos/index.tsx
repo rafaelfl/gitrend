@@ -82,9 +82,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
     // search data after enter is typed in the search input
     const handleSearch = useCallback(() => {
         setPageNumber(1);
-        dispatch(
-            fetchRepositoryData({ language: languageVal, text: searchText, page: pageNumber, desc: descendingOrder }),
-        );
+        dispatch(fetchRepositoryData({ language: languageVal, text: searchText, page: 1, desc: descendingOrder }));
     }, [dispatch, languageVal, searchText, pageNumber, descendingOrder]);
 
     return (
