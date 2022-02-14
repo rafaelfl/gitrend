@@ -4,7 +4,8 @@
 
 ## About
 
-<p align="center">Project which allows the search for trending repositories in GitHub
+<p align="center">
+Project which allows the search for trending repositories in GitHub
 </p>
 
 
