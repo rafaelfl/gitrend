@@ -114,7 +114,6 @@ Furthermore, the Husky is configured to verify commit messages incompatible with
  <br />
  <sub><b>Rafael Fernandes Lopes</b></sub></a>
 
-
 Developed with 💜 by Rafael Fernandes Lopes
 
 [![Linkedin Badge](https://img.shields.io/badge/-Rafael%20Fernandes%20Lopes-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rafael-fernandes-lopes/)](https://www.linkedin.com/in/rafael-fernandes-lopes/)
