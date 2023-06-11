@@ -64,10 +64,18 @@ export const ListView = ({ children }: ListViewProps): JSX.Element => {
             <ScrollingWrapper data-testid="@ListView/scrollSlot" ref={scrollSlotsRef} onScroll={onScroll}>
                 {children}
             </ScrollingWrapper>
-            <ScrollLeftButton visible={showLeftButton} onClick={scrollLeft}>
+            <ScrollLeftButton
+                visible={showLeftButton}
+                onClick={scrollLeft}
+                aria-label="Scroll list of trending developers to the left"
+            >
                 <i className="fas fa-angle-left"></i>
             </ScrollLeftButton>
-            <ScrollRightButton visible={showRightButton} onClick={scrollRight}>
+            <ScrollRightButton
+                visible={showRightButton}
+                onClick={scrollRight}
+                aria-label="Scroll list of trending developers to the right"
+            >
                 <i className="fas fa-angle-right"></i>
             </ScrollRightButton>
         </ScrollingContainer>

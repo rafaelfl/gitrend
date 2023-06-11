@@ -20,6 +20,7 @@ exports[`ListView component tests it should match snapshot 1`] = `
       </button>
     </div>
     <button
+      aria-label="Scroll list of trending developers to the left"
       class="sc-hKwDye iMvXya"
     >
       <i
@@ -27,6 +28,7 @@ exports[`ListView component tests it should match snapshot 1`] = `
       />
     </button>
     <button
+      aria-label="Scroll list of trending developers to the right"
       class="sc-dkPtRN fyxqWQ"
     >
       <i
