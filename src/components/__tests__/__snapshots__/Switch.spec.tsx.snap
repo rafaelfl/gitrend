@@ -4,7 +4,7 @@ exports[`Switch component tests it should match snapshot 1`] = `
 <div>
   <label
     aria-label="Switch button"
-    class="sc-jRQBWg krnHGF"
+    class="sc-iGgWBj eDQWTT"
     data-testid="@Switch/container"
     tabindex="0"
   >
@@ -22,7 +22,7 @@ exports[`Switch component tests it should match snapshot 2`] = `
 <div>
   <label
     aria-label="Switch button"
-    class="sc-jRQBWg krnHGF"
+    class="sc-iGgWBj eDQWTT"
     data-testid="@Switch/container"
     tabindex="0"
   >

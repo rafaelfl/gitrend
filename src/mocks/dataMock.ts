@@ -321,7 +321,7 @@ export const dataMock = {
 };
 
 export const generateRandomDataMocks = (amountItems: number): any => {
-    let dataMocks = [];
+    const dataMocks: Array<any> = [];
     for (let i = 0; i < amountItems; i++) {
         const randomNumber = Math.floor(Math.random() * (99999 + 1)) + 1;
         const username = `user${randomNumber}`;

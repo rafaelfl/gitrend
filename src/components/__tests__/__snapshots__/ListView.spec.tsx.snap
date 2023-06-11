@@ -3,10 +3,10 @@
 exports[`ListView component tests it should match snapshot 1`] = `
 <div>
   <div
-    class="sc-bdvvtL dvUyWp"
+    class="sc-aXZVg cvjOnm"
   >
     <div
-      class="sc-gsDKAQ jMWrOX"
+      class="sc-gEvEer fEtOnB"
       data-testid="@ListView/scrollSlot"
     >
       <button>
@@ -20,14 +20,16 @@ exports[`ListView component tests it should match snapshot 1`] = `
       </button>
     </div>
     <button
-      class="sc-hKwDye iMvXya"
+      aria-label="Scroll list of trending developers to the left"
+      class="sc-fqkvVR kaLMDD"
     >
       <i
         class="fas fa-angle-left"
       />
     </button>
     <button
-      class="sc-dkPtRN fyxqWQ"
+      aria-label="Scroll list of trending developers to the right"
+      class="sc-eqUAAy kmEULY"
     >
       <i
         class="fas fa-angle-right"

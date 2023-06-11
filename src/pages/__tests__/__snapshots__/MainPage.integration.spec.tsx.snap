@@ -26,10 +26,10 @@ exports[`Integration tests of the MainPage it should match the snapshot 1`] = `
           Trending Developers
         </h2>
         <div
-          class="sc-bdvvtL dvUyWp"
+          class="sc-aXZVg cvjOnm"
         >
           <div
-            class="sc-gsDKAQ jMWrOX"
+            class="sc-gEvEer fEtOnB"
             data-testid="@ListView/scrollSlot"
           >
             <div
@@ -68,14 +68,16 @@ exports[`Integration tests of the MainPage it should match the snapshot 1`] = `
             </div>
           </div>
           <button
-            class="sc-hKwDye iMvXya"
+            aria-label="Scroll list of trending developers to the left"
+            class="sc-fqkvVR kaLMDD"
           >
             <i
               class="fas fa-angle-left"
             />
           </button>
           <button
-            class="sc-dkPtRN fyxqWQ"
+            aria-label="Scroll list of trending developers to the right"
+            class="sc-eqUAAy kmEULY"
           >
             <i
               class="fas fa-angle-right"
@@ -347,7 +349,7 @@ exports[`Integration tests of the MainPage it should match the snapshot 1`] = `
             >
               <label
                 aria-label="Show only your favorite repositories"
-                class="sc-jRQBWg krnHGF"
+                class="sc-iGgWBj eDQWTT"
                 data-testid="@Switch/container"
                 tabindex="0"
               >
