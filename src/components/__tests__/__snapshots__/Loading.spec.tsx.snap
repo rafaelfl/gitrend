@@ -3,7 +3,7 @@
 exports[`Loading component tests it should match snapshot 1`] = `
 <div>
   <div
-    class="sc-eCImPb iMA-DPx"
+    class="sc-dcJsrY cQUAKD"
     data-testid="@Loading"
     width="80"
   >
