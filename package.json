@@ -72,7 +72,15 @@
             "!src/index.tsx",
             "!src/reportWebVitals.ts",
             "!src/serviceWorker.ts",
-            "!src/config/index.ts"
+            "!src/config/index.ts",
+            "!src/react-app-env.d.ts",
+            "!src/types/*",
+            "!src/hooks/index.ts",
+            "!src/components/index.ts",
+            "!src/services/index.ts",
+            "!src/services/api/types/index.ts",
+            "!src/store/features/gitRepository/thunks/index.ts",
+            "!src/pages/MainPage/sections/index.ts"
         ],
         "coverageReporters": [
             "text"
