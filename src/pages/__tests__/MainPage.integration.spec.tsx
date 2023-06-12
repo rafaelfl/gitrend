@@ -353,7 +353,7 @@ describe('Integration tests of the MainPage', () => {
         await waitFor(() => screen.getAllByTestId('@CardRepository/favorite'));
 
         // the default mock (for any language) returns three repos, but...
-        expect(screen.getAllByTestId('@CardRepository/favorite')).toHaveLength(3);
+        await waitFor(() => expect(screen.getAllByTestId('@CardRepository/favorite')).toHaveLength(3));
 
         // tag the first repo as favorite
         userEvent.click(screen.getAllByTestId('@CardRepository/favorite')[0]);
