@@ -28,8 +28,7 @@ type ScrollRightButtonProps = {
 };
 
 export const ScrollRightButton = styled.button<ScrollRightButtonProps>`
-    opacity: ${(props) => (props.visible === true ? 1 : 0)};
-    visibility: ${(props) => (props.visible === true ? 'visible' : 'hidden')};
+    display: ${(props) => (props.visible === true ? 'block' : 'none')};
     position: absolute;
     left: 100%;
     top: 50%;
@@ -55,8 +54,7 @@ type ScrollLeftButtonProps = {
 };
 
 export const ScrollLeftButton = styled.button<ScrollLeftButtonProps>`
-    opacity: ${(props) => (props.visible === true ? 1 : 0)};
-    visibility: ${(props) => (props.visible === true ? 'visible' : 'hidden')};
+    display: ${(props) => (props.visible === true ? 'block' : 'none')};
     position: absolute;
     left: 0%;
     top: 50%;
