@@ -11,7 +11,7 @@ interface RepositoryListProps {
     errorRepositories: string | undefined;
     repositoryList: GitRepository[];
     showOnlyFavorites: boolean;
-    favoriteRepositories: GitRepository[];
+    favoriteRepositories: { [repoId: string]: GitRepository };
 }
 
 export const RepositoryList = ({
@@ -40,7 +40,9 @@ export const RepositoryList = ({
         );
     }
 
-    const repoList = showOnlyFavorites ? favoriteRepositories : repositoryList;
+    const repoList = showOnlyFavorites
+        ? Object.values(favoriteRepositories).sort((a, b) => a.name.localeCompare(b.name))
+        : repositoryList;
 
     if (repoList.length === 0) {
         if (showOnlyFavorites) {
@@ -76,9 +78,9 @@ export const RepositoryList = ({
                     url={repo.htmlUrl}
                     onFavoriteClick={() => {
                         if (!repo.isFavorite) {
-                            dispatch(tagRepositoryAsFavorite(repo.id));
+                            dispatch(tagRepositoryAsFavorite(repo));
                         } else {
-                            dispatch(untagRepositoryAsFavorite(repo.id));
+                            dispatch(untagRepositoryAsFavorite(repo));
                         }
                     }}
                 />

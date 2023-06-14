@@ -29,7 +29,7 @@ export const SectionTrendingRepos = (): JSX.Element => {
     const repositoryList: GitRepository[] = useAppSelector(selectRepositoryList);
     const totalCountRepositories: number = useAppSelector(selectTotalCountRepositories);
 
-    const favoriteRepositories: GitRepository[] = useAppSelector(selectFavoriteRepositories);
+    const favoriteRepositories: { [repoId: string]: GitRepository } = useAppSelector(selectFavoriteRepositories);
 
     const [languageVal, setLanguageVal] = useState('any');
     const [searchText, setSearchText] = useState('');

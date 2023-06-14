@@ -50,17 +50,17 @@ export const fetchRepositoryData = createAsyncThunk(
 
             //// loading favorite repositories from the local storage
             // read data from the localStorage
-            let localStorageData;
+            let storageData: any;
 
             try {
-                localStorageData = JSON.parse(localStorage.getItem(appConfig.favoriteRepositoriesKey) ?? '[]');
+                storageData = JSON.parse(localStorage.getItem(appConfig.favoriteRepositoriesKey) ?? '{}');
             } catch (e) {
-                localStorageData = [];
+                storageData = {};
             }
 
             // this conversion is done because the localStorage can be edited in the browser
             // so, in order to avoid any type errors, we convert the localStorageData to a GitRepository[]
-            const updatedFavoriteRepositories = localStorageData.map((repo: any) => {
+            const updatedFavoriteRepositories = gitRepositoryList.map((repo: GitRepository) => {
                 const repository: GitRepository = {
                     id: repo.id ?? '',
                     name: repo.name ?? '',
@@ -71,7 +71,7 @@ export const fetchRepositoryData = createAsyncThunk(
                     starsCount: repo.starsCount ?? 0,
                     isPrivate: repo.isPrivate ?? false,
                     language: repo.language ?? '',
-                    isFavorite: true,
+                    isFavorite: !!storageData[repo.id],
                 };
 
                 return repository;
@@ -80,9 +80,9 @@ export const fetchRepositoryData = createAsyncThunk(
             // updating data of the repositories
             dispatch(
                 repositoryDataUpdate({
-                    data: gitRepositoryList,
+                    data: updatedFavoriteRepositories,
                     totalCountRepositories: totalCount,
-                    favoriteRepositories: updatedFavoriteRepositories,
+                    favoriteRepositories: storageData,
                 }),
             );
         } catch (error) {
