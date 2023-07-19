@@ -17,7 +17,7 @@ describe('gitRepository reducer tests', () => {
     const initialState: GitRepositoryDataState = {
         data: [],
         totalCountRepositories: 0,
-        favoriteRepositories: [],
+        favoriteRepositories: {},
         error: undefined,
         status: 'idle',
     };
@@ -50,7 +50,7 @@ describe('gitRepository reducer tests', () => {
             },
         ],
         totalCountRepositories: 2,
-        favoriteRepositories: [],
+        favoriteRepositories: {},
         error: undefined,
         status: 'idle',
     };
@@ -83,8 +83,8 @@ describe('gitRepository reducer tests', () => {
             },
         ],
         totalCountRepositories: 2,
-        favoriteRepositories: [
-            {
+        favoriteRepositories: {
+            '2': {
                 id: '2',
                 name: 'repo2',
                 description: 'description2',
@@ -96,7 +96,7 @@ describe('gitRepository reducer tests', () => {
                 isPrivate: false,
                 language: 'cpp',
             },
-        ],
+        },
         error: undefined,
         status: 'idle',
     };
@@ -138,7 +138,7 @@ describe('gitRepository reducer tests', () => {
         expect(actual?.data?.[1]).not.toBeUndefined();
         expect(actual.data[1]?.id).not.toBeUndefined();
 
-        const actualWithoutFavorite = reducer(actual, removeFavoriteRepository(actual.data[1].id));
+        const actualWithoutFavorite = reducer(actual, removeFavoriteRepository(actual.data[1]));
 
         expect(actualWithoutFavorite).toEqual(filledWithoutFavoriteState);
     });

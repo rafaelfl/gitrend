@@ -69,7 +69,7 @@ exports[`Integration tests of the MainPage it should match the snapshot 1`] = `
           </div>
           <button
             aria-label="Scroll list of trending developers to the left"
-            class="sc-fqkvVR kaLMDD"
+            class="sc-fqkvVR cwFKuO"
           >
             <i
               class="fas fa-angle-left"
@@ -77,7 +77,7 @@ exports[`Integration tests of the MainPage it should match the snapshot 1`] = `
           </button>
           <button
             aria-label="Scroll list of trending developers to the right"
-            class="sc-eqUAAy kmEULY"
+            class="sc-eqUAAy cyXZCV"
           >
             <i
               class="fas fa-angle-right"

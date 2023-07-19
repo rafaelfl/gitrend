@@ -4,7 +4,7 @@ export const useOutsideClickDetector = (ref: React.RefObject<HTMLElement>, callb
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (ref.current && !ref.current.contains(e.target as Node)) {
-                callback && callback();
+                callback?.();
             }
         };
 

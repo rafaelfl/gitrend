@@ -353,7 +353,7 @@ describe('Integration tests of the MainPage', () => {
         await waitFor(() => screen.getAllByTestId('@CardRepository/favorite'));
 
         // the default mock (for any language) returns three repos, but...
-        expect(screen.getAllByTestId('@CardRepository/favorite')).toHaveLength(3);
+        await waitFor(() => expect(screen.getAllByTestId('@CardRepository/favorite')).toHaveLength(3));
 
         // tag the first repo as favorite
         userEvent.click(screen.getAllByTestId('@CardRepository/favorite')[0]);
@@ -366,14 +366,12 @@ describe('Integration tests of the MainPage', () => {
 
         // verify the mocked localStorage
         expect(localStorage.__STORE__['favoriteRepositories']).not.toBeUndefined();
+
         // the favoriteRepositories + test + MSW
         expect(Object.keys(localStorage.__STORE__)).toHaveLength(3);
 
-        const localStorageData: any[] = JSON.parse(localStorage.__STORE__['favoriteRepositories']);
-        expect(localStorageData).toHaveLength(1);
-
-        // saving an empty object in localStorage's array
-        localStorageData.push({});
+        const localStorageData: any = JSON.parse(localStorage.__STORE__['favoriteRepositories']);
+        expect(Object.keys(localStorageData)).toHaveLength(1);
 
         localStorage.setItem('favoriteRepositories', JSON.stringify(localStorageData));
 

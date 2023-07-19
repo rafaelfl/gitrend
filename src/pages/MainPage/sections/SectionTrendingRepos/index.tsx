@@ -16,6 +16,7 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks';
 import { GitRepository } from '../../../../types';
 import { RepositoryList } from './components/RepositoryList';
 import { OrderSelector } from '../../components/OrderSelector';
+import { useDebounce } from '../../../../hooks/useDebounce';
 
 type NavigationEventTypes = 'first' | 'previous' | 'next' | 'last';
 
@@ -28,17 +29,20 @@ export const SectionTrendingRepos = (): JSX.Element => {
     const repositoryList: GitRepository[] = useAppSelector(selectRepositoryList);
     const totalCountRepositories: number = useAppSelector(selectTotalCountRepositories);
 
-    const favoriteRepositories: GitRepository[] = useAppSelector(selectFavoriteRepositories);
+    const favoriteRepositories: { [repoId: string]: GitRepository } = useAppSelector(selectFavoriteRepositories);
 
     const [languageVal, setLanguageVal] = useState('any');
     const [searchText, setSearchText] = useState('');
+    const debouncedSearchText = useDebounce<string>(searchText, 500);
+
     const [pageNumber, setPageNumber] = useState(1);
-    const [descendingOrder, setDescendingOrder] = useState(true);
+    const [isDescendingOrder, setIsDescendingOrder] = useState(true);
 
     const [onlyFavorites, setOnlyFavorite] = useState(false);
 
     const clearSearchFilters = useCallback(() => {
         setLanguageVal('any');
+        setIsDescendingOrder(true);
         setSearchText('');
     }, [setLanguageVal, setSearchText]);
 
@@ -67,23 +71,30 @@ export const SectionTrendingRepos = (): JSX.Element => {
                     page: newPageNumber,
                     language: languageVal,
                     text: searchText,
-                    desc: descendingOrder,
+                    isDesc: isDescendingOrder,
                 }),
             );
         },
-        [dispatch, pageNumber, totalCountRepositories, appConfig, setPageNumber, descendingOrder],
+        [dispatch, pageNumber, totalCountRepositories, appConfig, setPageNumber, isDescendingOrder],
     );
 
     useEffect(() => {
         // fetch the data from GitHub API on page loaded
-        dispatch(fetchRepositoryData({}));
-    }, [dispatch]);
+        dispatch(
+            fetchRepositoryData({
+                language: languageVal,
+                text: debouncedSearchText,
+                page: 1,
+                isDesc: isDescendingOrder,
+            }),
+        );
+    }, [dispatch, languageVal, debouncedSearchText, isDescendingOrder]);
 
     // search data after enter is typed in the search input
     const handleSearch = useCallback(() => {
         setPageNumber(1);
-        dispatch(fetchRepositoryData({ language: languageVal, text: searchText, page: 1, desc: descendingOrder }));
-    }, [dispatch, languageVal, searchText, pageNumber, descendingOrder]);
+        dispatch(fetchRepositoryData({ language: languageVal, text: searchText, page: 1, isDesc: isDescendingOrder }));
+    }, [dispatch, languageVal, searchText, pageNumber, isDescendingOrder]);
 
     return (
         <section className="trending-repos-container">
@@ -115,7 +126,10 @@ export const SectionTrendingRepos = (): JSX.Element => {
                         disabled={onlyFavorites}
                     />
 
-                    <OrderSelector checked={descendingOrder} onChange={() => setDescendingOrder(!descendingOrder)} />
+                    <OrderSelector
+                        checked={isDescendingOrder}
+                        onChange={() => setIsDescendingOrder(!isDescendingOrder)}
+                    />
 
                     <button
                         data-testid="@ClearSearchFilters"

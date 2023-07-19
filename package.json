@@ -1,11 +1,11 @@
 {
     "name": "git-trend",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "private": true,
     "dependencies": {
         "@reduxjs/toolkit": "^1.7.2",
         "@testing-library/jest-dom": "^5.16.2",
-        "@testing-library/react": "^12.1.2",
+        "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^13.5.0",
         "@types/jest": "^27.4.0",
         "@types/node": "^12.20.43",
@@ -72,7 +72,15 @@
             "!src/index.tsx",
             "!src/reportWebVitals.ts",
             "!src/serviceWorker.ts",
-            "!src/config/index.ts"
+            "!src/config/index.ts",
+            "!src/react-app-env.d.ts",
+            "!src/types/*",
+            "!src/hooks/index.ts",
+            "!src/components/index.ts",
+            "!src/services/index.ts",
+            "!src/services/api/types/index.ts",
+            "!src/store/features/gitRepository/thunks/index.ts",
+            "!src/pages/MainPage/sections/index.ts"
         ],
         "coverageReporters": [
             "text"

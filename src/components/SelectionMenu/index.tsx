@@ -35,20 +35,20 @@ export const SelectionMenu = ({
     }, [selectedValue]);
 
     const onToggleMenu = useCallback(
-        (e) => {
+        (e: React.MouseEvent<HTMLDetailsElement>) => {
             e.preventDefault();
 
             if (!disabled) {
-                setIsOpen(!isOpen);
+                setIsOpen((isOpen) => !isOpen);
             }
         },
         [setIsOpen, isOpen, disabled],
     );
 
     const handleClickItem = useCallback(
-        (e) => {
-            const value = e.target.id;
-            onChange && onChange(value);
+        (e: React.MouseEvent<HTMLButtonElement>) => {
+            const value = e.currentTarget.id;
+            onChange?.(value);
         },
         [onChange],
     );

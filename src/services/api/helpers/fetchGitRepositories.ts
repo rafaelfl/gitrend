@@ -59,23 +59,34 @@ export const fetchGitRepositoriesAndUsers = async (
         return repo;
     });
 
+    type OrderedGitUser = GitUser & { orderUser: number };
+
+    let orderUser = 0;
     // creating user entities
-    const gitUsersList: GitUser[] = items.reduce((acc: GitUser[], currentUser: GenericMap) => {
-        const owner = currentUser['owner'];
+    const gitUsersMap: { [userId: string]: OrderedGitUser } = items.reduce(
+        (acc: { [userId: string]: OrderedGitUser }, currentUser: GenericMap) => {
+            const owner = currentUser['owner'];
 
-        const user: GitUser = {
-            id: `${owner.id}`,
-            username: owner.login,
-            avatarUrl: owner.avatar_url,
-            htmlUrl: owner.html_url,
-        };
+            const user: OrderedGitUser = {
+                id: `${owner.id}`,
+                username: owner.login,
+                avatarUrl: owner.avatar_url,
+                htmlUrl: owner.html_url,
+                orderUser,
+            };
 
-        if (!acc.find((u: GitUser) => u.id === user.id)) {
-            acc.push(user);
-        }
+            if (!acc[user.id]) {
+                acc[user.id] = user;
+                orderUser++;
+            }
 
-        return acc;
-    }, []);
+            return acc;
+        },
+        {},
+    );
+
+    // preserving order of appearance
+    const gitUsersList: GitUser[] = Object.values(gitUsersMap).sort((a, b) => a.orderUser - b.orderUser);
 
     return {
         totalCount,
