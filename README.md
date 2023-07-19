@@ -2,10 +2,12 @@
 
 ![Licença](https://img.shields.io/badge/license-MIT-brightgreen)
 
+**If you like this project then give it a Github star!** 🤩⭐
+
 ## About
 
 <p align="center">
-Project which allows the search for trending repositories in GitHub
+Project which allows to search for trending repositories in GitHub
 </p>
 
 
